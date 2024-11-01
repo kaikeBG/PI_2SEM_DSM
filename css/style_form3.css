@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #000;
+}
+h2, h3 {
+    text-align: center;
+}
+.form-group {
+    margin: 10px 0;
+}
+label {
+    font-weight: bold;
+}
+input[type="text"], input[type="date"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+textarea {
+    resize: vertical;
+}
+.checkbox-group, .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkbox-group input, .radio-group input {
+    margin-left: 10px;
+}
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.signature-box {
+    text-align: center;
+    width: 48%;
+}
