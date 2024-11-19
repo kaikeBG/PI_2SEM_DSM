@@ -76,8 +76,22 @@
 
 
     <script>
+        const formHae = document.forms["haeForm"].getElementsByTagName("input")
+        var arrayFormHae = Array.prototype.slice.call( formHae )
+        arrayFormHae.forEach(element => {
+            element.value = localStorage.getItem(element.name)
+            console.log(localStorage.getItem(element.name))
+        });
+
+        function update(){
+            arrayFormHae.forEach(element => {
+                localStorage.setItem(element.name, element.value)
+            });
+        }
+
         function enviarFormulario() {
             alert("Formulário enviado com sucesso!");
+            localStorage.clear()
         }
     </script>
     <script src="../js/components.js"></script>

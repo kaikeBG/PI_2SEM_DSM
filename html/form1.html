@@ -76,7 +76,7 @@
             <label for="termino">Término do Projeto:</label>
             <input type="date" id="termino" name="termino" required>
             <div class="container-btn">
-                <button type="submit" class="submit-btn">Enviar Formulário</button>
+                <button onclick="update()" type="submit" class="submit-btn">Enviar Formulário</button>
             </div>
         </form>
     </div>
@@ -87,16 +87,27 @@
     
     
     <script>
+        
+        const formHae = document.forms["haeForm"].getElementsByTagName("input")
+        var arrayFormHae = Array.prototype.slice.call( formHae )
+        arrayFormHae.forEach(element => {
+            element.value = localStorage.getItem(element.name)
+            console.log(localStorage.getItem(element.name))
+        });
+        function update(){
+            arrayFormHae.forEach(element => {
+                localStorage.setItem(element.name, element.value)
+            });
+        }
         function validateForm() {
-            const email = document.forms["haeForm"]["email"].value;
-
-
+            const email = formHae["email"].value;
 
 
             if (email == "") {
                 alert("Por favor, preencha o campo");
                 return false;
             }
+            localStorage.clear()
             return true;
         }
     </script>
