@@ -1,26 +1,39 @@
-nav ul{
+/* Estilos gerais do menu */
+nav ul {
+    padding: 0;
+    margin: 0;
     display: flex;
-    flex-direction: row;
-    gap: 12%;
     justify-content: center;
-    align-items: center;
-    background-color: #b20000;
-    height: 45px;
-    margin: unset;
+    background-color: #333333; /* Cor de fundo do menu */
+    border-radius: 5px;
 }
 
-nav ul li{
+nav ul li {
     list-style-type: none;
+    margin: 0 15px; /* Espaçamento entre os itens */
 }
 
-nav ul li a{
+nav ul li a {
     text-decoration: none;
     color: #ffffff;
-    font-size: medium;
-    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    display: block; /* Para o padding funcionar corretamente */
+    border-radius: 5px; /* Cantos arredondados nos itens */
+    transition: background-color 0.3s, transform 0.3s ease; /* Efeito de transição suave */
 }
 
-nav ul li a:hover{
-    background-color: #700303;
+/* Efeito de hover */
+nav ul li a:hover {
+    background-color: #700303; /* Cor de fundo no hover */
+    transform: translateY(-3px); /* Levanta um pouco o item ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave no hover */
 }
 
+/* Efeito de foco */
+nav ul li a:focus {
+    outline: none;
+    background-color: #ff5733; /* Cor de fundo quando o item recebe o foco */
+    transform: translateY(-3px); /* Levanta o item no foco */
+}
