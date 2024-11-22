@@ -21,7 +21,7 @@
         <span class="erro"></span>
         <div class="section-title">ANEXO II</div>
 
-        <form action="haeForm" id="haeForm">
+        <form action="form1.html" id="haeForm">
             <div class="section-title">1 - Metas Relacionadas ao Projeto</div>
 
             <label for="metas">Descreva as metas do projeto:</label>
@@ -61,7 +61,7 @@
 
             <label>Atividades:</label>
             <div class="cronograma_atividades">
-                <label for="mes"> escolha ima data</label>
+                <label for="mes"> escolha uma data</label>
                 <input type="date" name="ima" id="mes">
             </div>
 
@@ -109,6 +109,7 @@
             if (erro) {
                 window.scrollTo({ top: 220 });
             } else {
+                localStorage.clear()
                 document.querySelector("#haeForm").submit()
             }
         }
