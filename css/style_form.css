@@ -4,6 +4,9 @@ body {
     margin: 0;
 }
 
+.erro{
+    color: red;
+}
 
 .container {
     max-width: 800px;

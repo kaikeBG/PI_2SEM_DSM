@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário Fatec CPS Carreira</title>
-    <link rel="stylesheet" href="../css/style_form1.css">
+    <link rel="stylesheet" href="../css/style_form.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="shortcut icon" href="../images/favicon/favicon.ico" type="image/x-icon">
 </head>
@@ -18,43 +18,43 @@
     <div class="container form2">
 
         <h1>Fatec de Itapira "Ogari de Castro Pacheco"</h1>
+        <span class="erro"></span>
         <div class="section-title">ANEXO II</div>
 
-        <form action="haeForm">
-
+        <form action="haeForm" id="haeForm">
             <div class="section-title">1 - Metas Relacionadas ao Projeto</div>
 
             <label for="metas">Descreva as metas do projeto:</label>
-            <textarea id="metas" rows="4"></textarea>
+            <textarea id="metas" name="metas" rows="4"></textarea>
 
 
             <div class="section-title">2 - Objetivos do Projeto - Detalhamento</div>
 
             <label for="objetivos">Descreva os objetivos do projeto:</label>
-            <textarea id="objetivos" rows="3"></textarea>
+            <textarea id="objetivos" name="objetivos" rows="3"></textarea>
 
 
             <div class="section-title">3 - Justificativas do Projeto - Detalhamento</div>
 
             <label for="justificativas">Descreva as justificativas do projeto:</label>
-            <textarea id="justificativas" rows="3"></textarea>
+            <textarea id="justificativas" rows="3" name="justificativas"></textarea>
 
 
             <div class="section-title">4 - Recursos Materiais e Humanos - Detalhamento</div>
 
             <label for="recursos">Liste os recursos necessários:</label>
-            <textarea id="recursos" rows="3"></textarea>
+            <textarea id="recursos" rows="3" name="recursos"></textarea>
 
             <div class="section-title">5 - Resultado Esperado - Previsão</div>
 
             <label for="resultado">Descreva o resultado esperado:</label>
-            <textarea id="resultado" rows="2"></textarea>
+            <textarea id="resultado" rows="2" name="resultado"></textarea>
 
 
             <div class="section-title">6 - Metodologia</div>
 
             <label for="metodologia">Descreva a metodologia a ser utilizada:</label>
-            <textarea id="metodologia" rows="2"></textarea>
+            <textarea id="metodologia" name="metodologia" rows="2"></textarea>
 
 
             <div class="section-title">7 - Cronograma de Execução das Atividades</div>
@@ -62,12 +62,12 @@
             <label>Atividades:</label>
             <div class="cronograma_atividades">
                 <label for="mes"> escolha ima data</label>
-                <input type="date" id="mes">
+                <input type="date" name="ima" id="mes">
             </div>
 
 
             <div class="container-btn">
-                <button onclick="enviarFormulario()" class="submit-btn">Enviar Formulário</button>
+                <button onclick="submitForm()" type="button"  class="submit-btn">Enviar Formulário</button>
             </div>
         </form>
 
@@ -76,22 +76,41 @@
 
 
     <script>
-        const formHae = document.forms["haeForm"].getElementsByTagName("input")
-        var arrayFormHae = Array.prototype.slice.call( formHae )
+
+        const inputsHae = document.forms["haeForm"].getElementsByTagName("input")
+        const textAreasHae = document.forms["haeForm"].getElementsByTagName("textArea")
+        var arrayFormHae = Array.prototype.slice.call(inputsHae)
+
+        arrayFormHae = arrayFormHae.concat(Array.prototype.slice.call(textAreasHae))
+
         arrayFormHae.forEach(element => {
             element.value = localStorage.getItem(element.name)
-            console.log(localStorage.getItem(element.name))
         });
-
-        function update(){
+        function update() {
             arrayFormHae.forEach(element => {
                 localStorage.setItem(element.name, element.value)
             });
         }
+        function submitForm() {
+            update()
+            document.querySelector(".erro").innerHTML = ""
 
-        function enviarFormulario() {
-            alert("Formulário enviado com sucesso!");
-            localStorage.clear()
+            let erro = false
+
+            let camps = []
+            arrayFormHae.forEach(element => {
+                camps[element.name] = element.value
+                if (["", null].includes(element.value)) {
+                    erro = true
+                    document.querySelector(".erro").innerHTML += `* O campo ${element.name} esta vazio<br>`
+                }
+            });
+
+            if (erro) {
+                window.scrollTo({ top: 220 });
+            } else {
+                document.querySelector("#haeForm").submit()
+            }
         }
     </script>
     <script src="../js/components.js"></script>
