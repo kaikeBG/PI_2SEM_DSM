@@ -67,17 +67,14 @@
 
             <div class="section-title">Quantidade de H.A.E. para Estágio Supervisionado</div>
 
-            <label for="cst-gti">CST em GTI:</label>
-            <input type="number" value="0" id="cst-gti" name="cst-gti" required>
-
             <label for="cst-gpi">CST em GPI:</label>
-            <input type="number" value="0" id="cst-gpi" name="cst-gpi" required>
+            <input type="number" value="0" id="cst-gpi" class="cst" name="cst-gpi" required>
 
             <label for="cst-ge">CST em GE:</label>
-            <input type="number" value="0" id="cst-ge" name="cst-ge" required>
+            <input type="number" value="0" id="cst-ge"  class="cst" name="cst-ge" required>
 
             <label for="cst-dsm">CST em DSM:</label>
-            <input type="number" value="0" id="cst-dsm" name="cst-dsm" required>
+            <input type="number" value="0" id="cst-dsm" class="cst" name="cst-dsm" required>
 
             <div class="section-title">Período do Projeto</div>
 
@@ -137,7 +134,24 @@
             } else {
                 document.querySelector("#haeForm").submit()
             }
+
+            
         }
+
+        const horas = document.querySelectorAll(".cst")
+        let arrayHoras = Array.prototype.slice.call(horas)
+        arrayHoras.forEach(element =>{
+            element.addEventListener("change", ()=>{
+                arrayHoras.forEach(inputElement =>{
+
+                    if(element != inputElement){
+                        inputElement.value = "0"
+                        console.log("element")
+                    }
+                    console.log(element, inputElement)
+                })
+            })
+        })
     </script>
 
 </body>
