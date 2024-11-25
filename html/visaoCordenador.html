@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/nav.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             color: #333;
             margin: 0px;
             padding: 0px;
@@ -41,7 +41,7 @@
         tr:hover {
             background-color: #e9ecef;
         }
-        .publish-button {
+        .publish-button , .publish-button-modal {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -52,11 +52,15 @@
             cursor: pointer;
             font-size: 16px;
         }
+        .publish-button-modal{
+            margin: 0;
+        }
         .publish-button:hover {
             background-color: #b90000;
         }
         .download-icon:hover {
             color: #0056b3;
+            justify-self: start;
         }
         .material-icons {
             font-size: 24px; /* Increased size for the icon */
@@ -80,11 +84,13 @@
         }
         .modal-content {
             background-color: #fefefe;
+            border-radius: 10px;
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
             max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
         .close {
             color: #aaa;
@@ -101,12 +107,14 @@
             cursor: pointer;
         }
         .justify-input {
-            width: 80%;
+            width: 95%;
             height: 80px; /* Adjusted height */
             margin-top: 10px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            resize: none;
+            font-family: Arial, Helvetica, sans-serif;
              /* Disables resizing of the textarea */
         }
         .modal button {
@@ -119,6 +127,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        
         .modal button:hover {
             background-color: #0056b3;
         }
@@ -128,13 +137,18 @@
         }
 
         /* Add margin to the download icon */
-        .download-icon {
-            margin-left: 12%;
-        }
         .modal-content a {
-            display: inline-block;
             margin-top: 20px; /* Added margin to position the icon properly */
         }
+        .status-select{
+            margin-bottom: 10px;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -178,17 +192,18 @@
                 <option value="Rejeitado">Rejeitado</option>
             </select>
 
-            <div id="justifyContainer" style="display: none;">
+            <div id="justifyContainer"  style="display: none;">
                 <label for="justification">Justificativa:</label>
                 <textarea id="justification" class="justify-input" placeholder="Insira sua justificativa aqui..."></textarea>
             </div>
-
+            <div class="buttons">
+                <a href="#" id="downloadFile" class="download-icon">
+                    <span class="material-icons">download</span>
+                </a>
+    
+                <button id="saveStatus" class="publish-button-modal">Salvar</button>
+            </div>
             <!-- Download icon -->
-            <a href="#" id="downloadFile" class="download-icon">
-                <span class="material-icons">download</span>
-            </a>
-
-            <button id="saveStatus" class="publish-button">Salvar</button>
         </div>
     </div>
     <script src="../js/components.js"></script>
@@ -239,7 +254,6 @@
                 const publishButton = document.querySelector("#publishAll");
 
                 publishButton.addEventListener("click", () => {
-                    alert("Todos os status foram publicados.");
                 });
 
                 // Modal elements
@@ -276,7 +290,6 @@
                         const status = statusSelect.value;
                         const justification = status === "Parcialmente Aprovado" || status === "Rejeitado" ? justificationTextarea.value : "";
 
-                        alert(`HAE: ${hae.name}\nStatus: ${status}\nJustificativa: ${justification}`);
                         modal.style.display = "none";
                     });
                 }
