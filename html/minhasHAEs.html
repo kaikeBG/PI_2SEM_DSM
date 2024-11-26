@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAE Status - Docente</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/nav.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 8px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            margin-top: 3%;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .section h2 {
+            color: #b90000;
+            margin-bottom: 10px;
+        }
+
+        .filter-input {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .hae-card {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hae-card p {
+            margin: 5px 0;
+        }
+
+        .hae-card .comment {
+            font-style: italic;
+            color: #666;
+        }
+
+        .hae-card .status {
+            font-weight: bold;
+            color: #28a745;
+            /* Default green for status */
+        }
+
+        .hae-card.rejeitada .status {
+            color: #dc3545;
+            /* Red for rejected */
+        }
+
+        .hae-card.parcialmente-aprovada .status {
+            color: #ffc107;
+            /* Yellow for partially approved */
+        }
+
+        .hae-card.em-analise .status {
+            color: #007bff;
+            /* Blue for in analysis */
+        }
+    </style>
+</head>
+
+<body>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <div id="header"></div>
+
+    <div class="section-container">
+        <!-- Seção de Aprovadas -->
+        <div class="section" id="approvedSection">
+            <h2>HAEs Aprovadas</h2>
+            <input type="text" class="filter-input" id="approvedFilter" placeholder="Filtrar por nome ou data">
+            <div class="hae-card approved">
+                <p><strong>Nome da HAE:</strong> Curso de Java</p>
+                <p><strong>Data:</strong> 20/11/2024</p>
+                <p class="status">Aprovada</p>
+                <p class="comment">Nenhum comentário.</p>
+            </div>
+            <div class="hae-card approved">
+                <p><strong>Nome da HAE:</strong> Workshop de IA</p>
+                <p><strong>Data:</strong> 22/11/2024</p>
+                <p class="status">Aprovada</p>
+                <p class="comment">Nenhum comentário.</p>
+            </div>
+        </div>
+
+        <!-- Seção de Em Análise -->
+        <div class="section" id="inAnalysisSection">
+            <h2>HAEs em Análise</h2>
+            <input type="text" class="filter-input" id="inAnalysisFilter" placeholder="Filtrar por nome ou data">
+            <div class="hae-card em-analise">
+                <p><strong>Nome da HAE:</strong> Curso de Python</p>
+                <p><strong>Data:</strong> 19/11/2024</p>
+                <p class="status">Em Análise</p>
+                <p class="comment">Aguardando mais informações.</p>
+            </div>
+        </div>
+
+        <!-- Seção de Parcialmente Aprovadas -->
+        <div class="section" id="partiallyApprovedSection">
+            <h2>HAEs Parcialmente Aprovadas</h2>
+            <input type="text" class="filter-input" id="partiallyApprovedFilter" placeholder="Filtrar por nome ou data">
+            <div class="hae-card parcialmente-aprovada">
+                <p><strong>Nome da HAE:</strong> Palestra de Redes</p>
+                <p><strong>Data:</strong> 21/11/2024</p>
+                <p class="status">Parcialmente Aprovada</p>
+                <p class="comment">Necessita mais documentos para aprovação completa.</p>
+            </div>
+        </div>
+
+        <!-- Seção de Rejeitadas -->
+        <div class="section" id="rejectedSection">
+            <h2>HAEs Rejeitadas</h2>
+            <input type="text" class="filter-input" id="rejectedFilter" placeholder="Filtrar por nome ou data">
+            <div class="hae-card rejeitada">
+                <p><strong>Nome da HAE:</strong> Curso de Design</p>
+                <p><strong>Data:</strong> 18/11/2024</p>
+                <p class="status">Rejeitada</p>
+                <p class="comment">Documentos não completos.</p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/components.js"></script>
+    <div id="footer"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função de filtragem
+            function filterCards(filterInputId, sectionId) {
+                const filterInput = document.getElementById(filterInputId);
+                const cards = document.querySelectorAll(`#${sectionId} .hae-card`);
+
+                filterInput.addEventListener("input", function () {
+                    const searchTerm = filterInput.value.toLowerCase();
+                    cards.forEach(function (card) {
+                        const name = card.querySelector("p strong").textContent.toLowerCase();
+                        const date = card.querySelector("p").textContent.toLowerCase();
+                        if (name.includes(searchTerm) || date.includes(searchTerm)) {
+                            card.style.display = "block";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            }
+
+            // Adicionando filtros a cada seção
+            filterCards("approvedFilter", "approvedSection");
+            filterCards("inAnalysisFilter", "inAnalysisSection");
+            filterCards("partiallyApprovedFilter", "partiallyApprovedSection");
+            filterCards("rejectedFilter", "rejectedSection");
+        });
+    </script>
+</body>
+
+</html>
