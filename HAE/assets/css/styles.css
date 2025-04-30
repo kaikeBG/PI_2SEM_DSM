@@ -1,0 +1,708 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap);
+
+.logos {
+  margin-top: 15px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  padding-left: 15%;
+  background-color: #b20000;
+  height: 50px;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.central h1,
+h2,
+h3,
+h4,
+p {
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 125%;
+  color: white;
+  font-weight: bold;
+}
+
+.central {
+  width: 60%;
+  margin: 0 auto;
+  border-color: black;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.signature-box {
+  text-align: center;
+  width: 48%;
+}
+
+.signature-diretor {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.checkbox-group,
+.radio-group {
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Alinha verticalmente no centro */
+  gap: 20px;
+  /* Espaço entre as opções */
+}
+
+
+.checkbox-group input,
+.radio-group input {
+  margin-left: 10px;
+}
+
+.radio-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+  position: relative;
+  background-color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="radio"]:checked+.radio-btn {
+  background-color: #b20000;
+  border-color: #b20000;
+}
+
+input[type="radio"]:checked+.radio-btn::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* Garantir que o botão esteja dentro de um <td> com as propriedades corretas */
+td {
+  text-align: center;
+  /* Centraliza horizontalmente */
+  vertical-align: middle;
+  /* Centraliza verticalmente */
+  padding: 0;
+  /* Remover padding extra que possa afetar o alinhamento */
+}
+
+/* Estilização do botão */
+.upload-btn {
+  background-color: #b20000;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  display: inline-flex;
+  /* Flex para centralizar ícones/texto */
+  align-items: center;
+  /* Alinha o conteúdo verticalmente */
+  justify-content: center;
+  /* Alinha o conteúdo horizontalmente */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0;
+  /* Remove margem para evitar espaçamento extra */
+  height: auto;
+  /* Ajusta a altura do botão conforme necessário */
+}
+
+/* Estilo ao passar o mouse */
+.upload-btn:hover {
+  background-color: #8e0000;
+}
+
+
+
+input[type="file"] {
+  display: none;
+  /* Mantém o input oculto */
+}
+
+
+
+label.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+label.custom-radio:hover .radio-btn {
+  border-color: #b20000;
+}
+
+input[type="radio"]:focus+.radio-btn {
+  box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.5);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input[type="text"]:valid,
+input[type="email"]:valid,
+input[type="number"]:valid,
+input[type="date"]:valid,
+select:valid {
+  border-color: #28a745;
+  /* Verde para campos válidos */
+}
+
+input[type="text"]:invalid,
+input[type="email"]:invalid,
+input[type="number"]:invalid,
+input[type="date"]:invalid,
+select:invalid {
+  border-color: #dc3545;
+  /* Vermelho para campos inválidos */
+}
+
+
+/* Estilo da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 65px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cabeçalho da tabela */
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #b20000;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #fff;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.titulo-sessao {
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.titulo-sessao ul {
+  text-align: center;
+}
+
+/* Formulário centralizado e com duas colunas */
+form {
+  gap: 10px;
+  /* Espaço reduzido entre os campos */
+  max-width: 800px;
+  /* Largura máxima para não esticar demais em telas grandes */
+  margin: 0 auto;
+  /* Centraliza o formulário */
+}
+
+/* Ajustes gerais nos campos do formulário */
+label {
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 14px;
+  /* Ajusta o tamanho da fonte */
+}
+
+/* Aplica borda fina e vermelha a todos os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  border: 1px solid #b20000;
+  /* Borda vermelha de 1px */
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Aplicando a borda vermelha também para as caixas dentro de ".cursos" */
+.modal {
+  display: none;
+  /* Inicialmente oculto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Estilo para o botão de fechar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilo do formulário dentro do modal */
+.editForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.editForm button {
+  background-color: #b20000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editForm button:hover {
+  background-color: #8e0000;
+}
+
+/* Espaçamento no título das seções */
+.titulo-sessao {
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Melhorar a aparência de botões */
+button[type="submit"] {
+  background-color: #b20000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #8e0000;
+}
+
+/* Estilização do botão com ícone */
+button {
+  background-color: #b20000;
+  /* Cor de fundo vermelha */
+  color: white;
+  /* Cor do texto (não será visível, pois o botão tem um ícone) */
+  padding: 10px 15px;
+  /* Espaçamento interno do botão */
+  border: none;
+  /* Sem borda */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  font-size: 16px;
+  /* Tamanho da fonte */
+  display: inline-flex;
+  /* Flexbox para alinhar o conteúdo dentro do botão */
+  align-items: center;
+  /* Alinha o ícone verticalmente */
+  justify-content: center;
+  /* Alinha o ícone horizontalmente */
+  cursor: pointer;
+  /* Cursor de ponteiro ao passar sobre o botão */
+  transition: background-color 0.3s;
+  /* Efeito de transição */
+}
+
+button svg {
+  fill: white;
+  /* Cor do ícone branca */
+  width: 20px;
+  /* Tamanho do ícone */
+  height: 20px;
+  /* Tamanho do ícone */
+}
+
+/* Efeito de hover para o botão */
+button:hover {
+  background-color: #8e0000;
+  /* Cor do fundo muda para um vermelho mais escuro no hover */
+}
+
+button:focus {
+  outline: none;
+  /* Remove o contorno padrão ao focar */
+}
+
+
+/* Efeito no hover do ícone (quando o botão for hover) */
+button:hover svg path {
+  fill: #e8eaed;
+  /* Cor do ícone altera quando passar o mouse no botão */
+}
+
+
+
+/* Quando a tela for pequena (exemplo: em dispositivos móveis), o formulário fica em uma coluna */
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+    /* Em telas pequenas, coloca tudo em uma coluna */
+  }
+}
+
+.cursos {
+  display: flex;
+  /* Usar flexbox para organizar os itens lado a lado */
+  justify-content: space-between;
+  /* Espaço entre os itens */
+  gap: 20px;
+  /* Adicionar um pequeno espaço entre os campos */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.cursos label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+  /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.cursos input[type="number"] {
+  border: 1px solid #b20000;
+  /* Borda vermelha de 1px */
+  padding: 10px;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.cursos div {
+  display: flex;
+  flex-direction: column;
+  /* Empilhar o label e o input em coluna */
+  width: 20%;
+  /* Ajuste a largura dos campos conforme necessário */
+}
+
+.checkbox-group input,
+.radio-group input {
+  margin-left: 10px;
+}
+
+.form-group {
+  margin: 10px 0;
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+section#govsp-rodape .container.rodape {
+  height: 120px;
+  width: 100%;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  margin-top: 90px;
+  font-size: 16px;
+}
+
+section#govsp-rodape {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4 !important;
+  background-color: #f4f4f4 !important;
+  min-height: 200px;
+  width: 100%;
+  max-width: 100vw;
+  z-index: 9999999;
+}
+
+/* Mostrar a primeira parte por padrão */
+#part-1 {
+  display: block;
+}
+
+/* Definindo os botões de navegação entre as partes */
+.next-btn {
+  background-color: #b20000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.next-btn:hover {
+  background-color: #8e0000;
+}
+
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #b20000;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+/* Estilos para a barra */
+#part-1,
+#part-2,
+#part-3,
+#part-4 {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes na exibição das partes do formulário */
+.form-part {
+  display: none;
+  /* Oculta todas as partes por padrão */
+}
+
+.form-part.active {
+  display: block;
+  /* Exibe a parte ativa */
+}
+
+/* Barra de progresso */
+.progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #f3f3f3;
+  margin: 50px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, )
+}
+
+/* Estilo para o modal de justificativa */
+.justification-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.justification-modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  /* Borda arredondada */
+}
+
+.justification-modal textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-color: #b20000;
+}
+
+.justification-modal .close {
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.login-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-container input[type="radio"] {
+  display: none;
+  /* Esconde o botão de opção original */
+}
+
+.login-container label {
+  font-size: 14px;
+  margin-right: 10px;
+  position: relative;
+  padding-left: 30px;
+  /* Espaço para a bolinha customizada */
+  cursor: pointer;
+}
+
+/* Estilo personalizado para a bolinha do botão de opção */
+.login-container label:before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  /* Borda cinza */
+  background-color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Quando o botão de opção é selecionado, muda a cor */
+.login-container input[type="radio"]:checked+label:before {
+  background-color: #b20000;
+  /* Cor de fundo vermelha */
+  border-color: #b20000;
+  /* Cor da borda vermelha */
+}
+
+/* Efeito de hover no label */
+.login-container label:hover:before {
+  border-color: #8e0000;
+  /* Cor da borda quando o mouse passa por cima */
+}
+
+.login-container button {
+  background-color: #b20000;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+  background-color: #8e0000;
+}
