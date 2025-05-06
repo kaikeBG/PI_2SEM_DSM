@@ -1,4 +1,7 @@
 -- Tabela Professor
+CREATE DATABASE CEOS;
+USE CEOS;
+
 CREATE TABLE professor (
     id_professor INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
@@ -10,18 +13,18 @@ CREATE TABLE professor (
 );
 
 -- Tabela Curso
-CREATE TABLE Curso (
+CREATE TABLE curso (
     id_curso INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL
 );
 
 -- Inserção dos cursos
-INSERT INTO Curso (nome) VALUES ('CST em GPI');
-INSERT INTO Curso (nome) VALUES ('CST em GE');
-INSERT INTO Curso (nome) VALUES ('CST em DSM');
+INSERT INTO curso (nome) VALUES ('CST em GPI');
+INSERT INTO curso (nome) VALUES ('CST em GE');
+INSERT INTO curso (nome) VALUES ('CST em DSM');
 
 -- Tabela Projeto
-CREATE TABLE Projeto (
+CREATE TABLE projeto (
     id_projeto INT PRIMARY KEY AUTO_INCREMENT,
     id_professor_projeto INT NOT NULL,
     tipo_hae ENUM('Estágio Supervisionado', 'Trabalho de Graduação') NOT NULL,
@@ -35,20 +38,20 @@ CREATE TABLE Projeto (
     metodologia TEXT
 );
 
+-- Tabela Cronograma do Projeto (padrão cronograma_projeto)
+CREATE TABLE cronograma_projeto (
+    id_cronograma_projeto INT PRIMARY KEY AUTO_INCREMENT,
+    id_projeto_cronograma INT NOT NULL,
+    mes INT(2) NOT NULL,
+    atividade VARCHAR(255) NOT NULL
+);
+
 -- Tabela ProfessorCursoHAE
-CREATE TABLE ProfessorCursoHAE (
+CREATE TABLE professor_curso_hae (
     id_professor_curso INT PRIMARY KEY AUTO_INCREMENT,
     id_professor_hae INT NOT NULL,
     id_curso_hae INT NOT NULL,
     qtd_hae INT NOT NULL DEFAULT 0
-);
-
--- Tabela Cronograma
-CREATE TABLE Cronograma (
-    id_cronograma INT PRIMARY KEY AUTO_INCREMENT,
-    id_projeto_cronograma INT NOT NULL,
-    mes INT(2) NOT NULL,
-    atividade VARCHAR(255) NOT NULL
 );
 
 -- Tabela Submissao (histórico)
@@ -80,34 +83,42 @@ CREATE TABLE carga_cursos (
     carga_horaria INT DEFAULT 0
 );
 
+-- Tabela Cronograma da Submissão (histórico)
+CREATE TABLE cronograma_submissao (
+    id_cronograma_submissao INT PRIMARY KEY AUTO_INCREMENT,
+    id_submissao_cronograma INT NOT NULL,
+    mes INT(2) NOT NULL,
+    atividade TEXT NOT NULL
+);
+
 -- Adicionar chaves estrangeiras após criação de todas as tabelas
 
 -- Projeto -> Professor
-ALTER TABLE Projeto
+ALTER TABLE projeto
 ADD CONSTRAINT fk_projeto_professor
 FOREIGN KEY (id_professor_projeto) REFERENCES professor(id_professor);
 
 -- ProfessorCursoHAE -> Professor
-ALTER TABLE ProfessorCursoHAE
+ALTER TABLE professor_curso_hae
 ADD CONSTRAINT fk_professor_hae
 FOREIGN KEY (id_professor_hae) REFERENCES professor(id_professor);
 
 -- ProfessorCursoHAE -> Curso
-ALTER TABLE ProfessorCursoHAE
+ALTER TABLE professor_curso_hae
 ADD CONSTRAINT fk_curso_hae
-FOREIGN KEY (id_curso_hae) REFERENCES Curso(id_curso);
+FOREIGN KEY (id_curso_hae) REFERENCES curso(id_curso);
 
--- Cronograma -> Projeto
-ALTER TABLE Cronograma
+-- CronogramaProjeto -> Projeto
+ALTER TABLE cronograma_projeto
 ADD CONSTRAINT fk_cronograma_projeto
-FOREIGN KEY (id_projeto_cronograma) REFERENCES Projeto(id_projeto);
+FOREIGN KEY (id_projeto_cronograma) REFERENCES projeto(id_projeto);
 
 -- CargaCursos -> Submissao
 ALTER TABLE carga_cursos
 ADD CONSTRAINT fk_carga_submissao
 FOREIGN KEY (id_submissao_curso) REFERENCES submissao(id_submissao);
 
--- Cronograma (histórico) -> Submissao
-ALTER TABLE cronograma
+-- CronogramaSubmissao -> Submissao
+ALTER TABLE cronograma_submissao
 ADD CONSTRAINT fk_cronograma_submissao
 FOREIGN KEY (id_submissao_cronograma) REFERENCES submissao(id_submissao);
