@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://saopaulo.sp.gov.br/barra-govsp/css/top-padrao-govsp-v2.min.css?vs=3.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="../assets/js/script.js" defer></script> <!-- Carrega o JS externo -->
 
 </head>
@@ -20,6 +20,7 @@
     <?php
     require "../components/header.php";
     require "../components/vlibras.php";
+    require "../components/modal.php";
     ?>
 
 
@@ -83,10 +84,6 @@
                 <div class="titulo-sessao">Quantidade de H.A.E. para Estágio Supervisionado</div>
 
                 <div class="cursos">
-                    <div>
-                        <label for="cst-gti">CST em GTI:</label>
-                        <input type="number" id="cst-gti" name="cst-gti" value="0">
-                    </div>
                     <div>
                         <label for="cst-gpi">CST em GPI:</label>
                         <input type="number" id="cst-gpi" name="cst-gpi" value="0">

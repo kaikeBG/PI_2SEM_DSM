@@ -1,4 +1,5 @@
 
+
 // Função para verificar se a parte anterior foi preenchida corretamente
 function checkPartCompleted(partId) {
     const fields = document.querySelectorAll(`#${partId} input, #${partId} select, #${partId} textarea`);
@@ -23,6 +24,10 @@ function updateProgressBar() {
     document.getElementById("progress-bar").style.width = progress + "%";
 }
 
+function fecharPopup() {
+    document.getElementById("popupAviso").style.display = "none";
+  }
+
 // Função de navegação entre as partes
 document.querySelector("#next-1").addEventListener("click", function () {
     if (checkPartCompleted("part-1")) {
@@ -30,7 +35,7 @@ document.querySelector("#next-1").addEventListener("click", function () {
         document.getElementById("part-2").style.display = "block";
         updateProgressBar();
     } else {
-        alert("Por favor, preencha todos os campos da Parte 1.");
+        document.getElementById("popupAviso").style.display = "block";
     }
 });
 
@@ -40,7 +45,7 @@ document.querySelector("#next-2").addEventListener("click", function () {
         document.getElementById("part-3").style.display = "block";
         updateProgressBar();
     } else {
-        alert("Por favor, preencha todos os campos da Parte 2.");
+        document.getElementById("popupAviso").style.display = "block";
     }
 });
 
@@ -55,13 +60,6 @@ document.querySelector("#prev-2").addEventListener("click", function () {
 });
 
 // Validação geral ao submeter o formulário
-function validateForm() {
-    if (!checkPartCompleted("part-1") || !checkPartCompleted("part-2") || !checkPartCompleted("part-3")) {
-        alert("Por favor, preencha todos os campos antes de enviar.");
-        return false;
-    }
-    return true;
-}
 
 function validateForm() {
     if (!checkPartCompleted("part-1") || !checkPartCompleted("part-2") || !checkPartCompleted("part-3")) {
@@ -89,10 +87,8 @@ function validateForm() {
     // Armazenar os dados no localStorage
     localStorage.setItem("formData", JSON.stringify(formData));
 
-    // Redirecionar para a página de enviado.html
-    window.location.href = "enviadoprof.html";
+    window.location.href = "enviadoprof.php";
 
-    return false; // Impede o envio tradicional do formulário
 }
 function gerarPDF() {
     const professor = document.getElementById("professor").value;
