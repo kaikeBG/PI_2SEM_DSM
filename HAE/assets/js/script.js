@@ -11,6 +11,33 @@ function checkPartCompleted(partId) {
     return true; // Todos os campos estão preenchidos
 }
 
+
+function validarDatas() {
+    const inicio = document.getElementById("inicio").value;
+    const termino = document.getElementById("termino").value;
+
+    if (inicio && termino && termino < inicio) {
+      alert("A data de término não pode ser anterior à data de início.");
+      document.getElementById("termino").value = ""; // limpa o campo de término
+      document.getElementById("termino").focus();    // foca novamente no campo
+    }
+  }
+
+
+  function mostrarInput() {
+    const selecao = document.getElementById("opcao").value;
+    const campoNumero = document.getElementById("numero");
+    const containerNumero = document.getElementById("containerNumero");
+
+    if (selecao !== "") {
+      containerNumero.style.display = "block";
+      campoNumero.disabled = false;
+    } else {
+      containerNumero.style.display = "none";
+      campoNumero.disabled = true;
+    }
+  }
+
 // Função para atualizar a barra de progresso
 function updateProgressBar() {
     const totalParts = 3;

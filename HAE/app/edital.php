@@ -81,21 +81,17 @@
 
             <!-- Parte 2 -->
             <div class="form-part" id="part-2">
-                <div class="titulo-sessao">Quantidade de H.A.E. para Estágio Supervisionado</div>
+                <label for="opcao">Escolha uma curso:</label>
+                    <select id="opcao" name="opcao" onchange="mostrarInput()">
+                     <option value="">-- Selecione --</option>
+                     <option value="opcao1">DSM</option>
+                     <option value="opcao2">GE</option>
+                     <option value="opcao3">GPI</option>
+                    </select>
 
-                <div class="cursos">
-                    <div>
-                        <label for="cst-gpi">CST em GPI:</label>
-                        <input type="number" id="cst-gpi" name="cst-gpi" value="0">
-                    </div>
-                    <div>
-                        <label for="cst-ge">CST em GE:</label>
-                        <input type="number" id="cst-ge" name="cst-ge" value="0">
-                    </div>
-                    <div>
-                        <label for="cst-dsm">CST em DSM:</label>
-                        <input type="number" id="cst-dsm" name="cst-dsm" value="0">
-                    </div>
+                <div id="containerNumero" style="display: none; margin-top: 10px;">
+                    <label for="numero">Qtd. de H.A.E. para Estágio Supervisionado:</label>
+                    <input type="number" id="numeroHAE" name="numeroHAE" disabled>
                 </div>
 
 
@@ -104,7 +100,7 @@
                 <input type="date" id="inicio" name="inicio" required>
 
                 <label for="termino">Término do Projeto:</label>
-                <input type="date" id="termino" name="termino" required>
+                <input type="date" id="termino" name="termino" required onblur="validarDatas()">
 
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">
