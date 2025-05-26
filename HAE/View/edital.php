@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    extract($_SESSION);
+    require("../Model/Professor.php");
+    $prof = new Professor();
+    $cur = $prof->getCurProf($id);
+    $formData = $prof->getFormData($id);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +27,9 @@
 <body>
 
     <?php
-    require "../components/header.php";
-    require "../components/vlibras.php";
-    require "../components/modal.php";
+    require "./components/header.php";
+    require "./components/vlibras.php";
+    require "./components/modal.php";
     ?>
 
 
@@ -49,19 +58,19 @@
                 <h1>Inscrição - H.A.E.</h1>
 
                 <label for="professor">Professor(a):</label>
-                <input type="text" id="professor" name="professor" required>
+                <input type="text" id="professor" name="professor" value="<?=$formData["nome_pro"]?>" disabled>
 
                 <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="<?=$formData["email_pro"]?>" disabled>
 
                 <label for="rg">R.G.:</label>
-                <input type="text" id="rg" name="rg" required>
+                <input type="text" id="rg" name="rg" value="<?=$formData["rg_pro"]?>" disabled>
 
                 <label for="matricula">Matrícula:</label>
-                <input type="text" id="matricula" name="matricula" required>
+                <input type="text" id="matricula" name="matricula" value="<?=$formData["id_pro"]?>" disabled>
 
                 <label for="hora-aula">Hora-aula semanal na Fatec:</label>
-                <input type="number" id="hora-aula" name="hora-aula" required>
+                <input type="number" id="hora-aula" name="hora-aula" value="<?=$formData["tempoHae"]?>" disabled>
 
                 <label for="outras-fatecs">Tem aula atribuída em outra(s) Fatec(s)?</label>
                 <select id="outras-fatecs" name="outras-fatecs" required>
@@ -83,10 +92,13 @@
             <div class="form-part" id="part-2">
                 <label for="opcao">Escolha uma curso:</label>
                     <select id="opcao" name="opcao" onchange="mostrarInput()">
-                     <option value="">-- Selecione --</option>
-                     <option value="opcao1">DSM</option>
-                     <option value="opcao2">GE</option>
-                     <option value="opcao3">GPI</option>
+                     <?php
+                     foreach ($cur as $key => $curso) {
+                     ?>
+                     <option value="<?=$curso["id_matCurFat"]?>"><?=$curso["nome_mat"]?> de <?=$curso["nome_cur"]?></option>
+                    <?php
+                     }
+                     ?>
                     </select>
 
                 <div id="containerNumero" style="display: none; margin-top: 10px;">

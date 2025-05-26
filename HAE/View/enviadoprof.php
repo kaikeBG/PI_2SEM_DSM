@@ -1,3 +1,7 @@
+<?php
+session_start();
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +18,8 @@
 <body>
 
     <?php
-    require "../components/header.php";
-    require "../components/vlibras.php";
+    require "./components/header.php";
+    require "./components/vlibras.php";
 
     ?>
 

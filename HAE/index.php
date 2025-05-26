@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_unset();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,7 +26,7 @@
 <body>
   <div class="login-container">
     <h2>Login do Edital</h2>
-    <form action="" method="POST" id="loginForm">
+    <form action="./Controller/login.php" method="POST" id="loginForm">
       <input type="text" name="username" placeholder="Usuário" required>
       <input type="password" name="password" placeholder="Senha" required>
 
@@ -45,10 +49,8 @@
       const coordenador = document.getElementById("coordenador").checked;
       const professor = document.getElementById("professor").checked;
 
-      if (coordenador) {
-        window.location.href = "app/enviado.php"; // Redireciona para a página do coordenador
-      } else if (professor) {
-        window.location.href = "app/enviadoprof.php"; // Redireciona para a página do professor
+      if (coordenador || professor) {
+         document.getElementById("loginForm").submit();
       } else {
         alert("Selecione uma função para continuar!");
       }

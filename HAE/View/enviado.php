@@ -1,3 +1,8 @@
+<?php
+session_start();
+var_dump($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,14 +13,13 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script defer src="../assets/js/scriptEnviado.js"></script>
-    <!-- Link CDN do jsPDF -->
 </head>
 
 <body>
 
     <?php
-    require "../components/header.php";
-    require "../components/vlibras.php";
+    require "./components/header.php";
+    require "./components/vlibras.php";
     ?>
 
 
