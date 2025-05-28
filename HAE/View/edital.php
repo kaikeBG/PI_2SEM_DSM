@@ -36,7 +36,9 @@
     <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
         <img src="../assets/img/cps.png" width="14%" alt="">
+        <img src="../assets/img/Ceos_Logo.svg" alt="" id = "logoCeos">
     </div>
+   
 
     <nav>
         <ul>

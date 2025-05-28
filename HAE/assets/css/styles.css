@@ -4,6 +4,10 @@
   margin-top: 15px;
 }
 
+.logos.logoCeos{
+  float: right;
+}
+
 nav ul {
   display: flex;
   flex-direction: row;
