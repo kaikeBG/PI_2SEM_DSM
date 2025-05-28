@@ -1,5 +1,19 @@
 
 
+function showPopup(message){
+    const modal = document.querySelector("#popupAviso");
+    let popupMessage = document.createElement("p")
+    popupMessage.innerText = message
+    modal.children[0].appendChild(popupMessage);
+    modal.style.display = "block";
+}
+
+function closePopup(){
+    const modal = document.querySelector("#popupAviso");
+    modal.children[0].removeChild(modal.children[0].children[1]);
+    modal.style.display = "none";
+}
+
 // Função para verificar se a parte anterior foi preenchida corretamente
 function checkPartCompleted(partId) {
     const fields = document.querySelectorAll(`#${partId} input, #${partId} select, #${partId} textarea`);
@@ -8,6 +22,7 @@ function checkPartCompleted(partId) {
             return false; // Caso algum campo não esteja preenchido
         }
     }
+
     return true; // Todos os campos estão preenchidos
 }
 
@@ -17,26 +32,27 @@ function validarDatas() {
     const termino = document.getElementById("termino").value;
 
     if (inicio && termino && termino < inicio) {
-      alert("A data de término não pode ser anterior à data de início.");
-      document.getElementById("termino").value = ""; // limpa o campo de término
-      document.getElementById("termino").focus();    // foca novamente no campo
+        showPopup("A data de término não pode ser anterior à data de início."); 
+        return false;
+    } else {
+        return true;
     }
-  }
+}
 
 
-  function mostrarInput() {
+function mostrarInput() {
     const selecao = document.getElementById("opcao").value;
     const campoNumero = document.getElementById("numero");
     const containerNumero = document.getElementById("containerNumero");
 
     if (selecao !== "") {
-      containerNumero.style.display = "block";
-      campoNumero.disabled = false;
+        containerNumero.style.display = "block";
+    
     } else {
-      containerNumero.style.display = "none";
-      campoNumero.disabled = true;
+        containerNumero.style.display = "none";
+        
     }
-  }
+}
 
 // Função para atualizar a barra de progresso
 function updateProgressBar() {
@@ -51,9 +67,6 @@ function updateProgressBar() {
     document.getElementById("progress-bar").style.width = progress + "%";
 }
 
-function fecharPopup() {
-    document.getElementById("popupAviso").style.display = "none";
-  }
 
 // Função de navegação entre as partes
 document.querySelector("#next-1").addEventListener("click", function () {
@@ -62,17 +75,21 @@ document.querySelector("#next-1").addEventListener("click", function () {
         document.getElementById("part-2").style.display = "block";
         updateProgressBar();
     } else {
-        document.getElementById("popupAviso").style.display = "block";
+                showPopup("PPor favor, preencha todos os campos antes de enviar.");
     }
 });
 
 document.querySelector("#next-2").addEventListener("click", function () {
+         if(!validarDatas()){
+            return
+         }
+        
     if (checkPartCompleted("part-2")) {
         document.getElementById("part-2").style.display = "none";
         document.getElementById("part-3").style.display = "block";
         updateProgressBar();
     } else {
-        document.getElementById("popupAviso").style.display = "block";
+                showPopup("Por favor, preencha todos os campos antes de enviar.");
     }
 });
 
@@ -89,10 +106,16 @@ document.querySelector("#prev-2").addEventListener("click", function () {
 // Validação geral ao submeter o formulário
 
 function validateForm() {
+    event.preventDefault()
     if (!checkPartCompleted("part-1") || !checkPartCompleted("part-2") || !checkPartCompleted("part-3")) {
         alert("Por favor, preencha todos os campos antes de enviar.");
         return false;
     }
+
+    if (validarDatas()) {
+        alert("A data de término não pode ser anterior à data de início.");
+        return false;
+    };
 
     // Coletando os dados do formulário
     const formData = {
@@ -154,10 +177,11 @@ function gerarPDF() {
     doc.text("Recursos: " + recursos, 20, 140);
     doc.text("Resultado Esperado: " + resultado, 20, 150);
     doc.text("Metodologia: " + metodologia, 20, 160);
-    
+
     // Salvar o PDF
     doc.save("formulario_hae.pdf");
 }
+
 
 
 

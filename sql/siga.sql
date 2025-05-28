@@ -94,11 +94,11 @@ INSERT INTO fatec (nome_fat) VALUES
 ('FATEC São Paulo'),
 ('FATEC Campinas');
 
-INSERT INTO professor (nome_pro, login_pro, senha_pro, email_pro, rg_pro, tempoHae) VALUES
-('Carlos Silva', 'csilva', 'senha123', 'csilva@fatec.sp.gov.br', '12.345.678-9', 5),
-('Ana Paula', 'apaula', 'senha456', 'apaula@fatec.sp.gov.br', '98.765.432-1', 8),
-('Roberta Lima', 'rlima', 'senha789', 'rlima@fatec.sp.gov.br', '11.223.344-5', 3),
-('João Mendes', 'jmendes', 'senhaabc', 'jmendes@fatec.sp.gov.br', '55.667.889-0', 10);
+INSERT INTO professor (nome_pro, senha_pro, email_pro, rg_pro, tempoHae) VALUES
+('Carlos Silva', 'senha123', 'csilva@fatec.sp.gov.br', '12.345.678-9', 5),
+('Ana Paula', 'senha456', 'apaula@fatec.sp.gov.br', '98.765.432-1', 8),
+('Roberta Lima', 'senha789', 'rlima@fatec.sp.gov.br', '11.223.344-5', 3),
+('João Mendes',  'senhaabc', 'jmendes@fatec.sp.gov.br', '55.667.889-0', 10);
 
 INSERT INTO materia (nome_mat, desc_mat) VALUES
 ('Banco de Dados', 'Modelagem, criação e administração de bancos de dados.'),

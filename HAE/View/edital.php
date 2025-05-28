@@ -92,10 +92,11 @@
             <div class="form-part" id="part-2">
                 <label for="opcao">Escolha uma curso:</label>
                     <select id="opcao" name="opcao" onchange="mostrarInput()">
+                     <option disabled selected value>-- SLECIONE O CURSO --</option>
                      <?php
                      foreach ($cur as $key => $curso) {
                      ?>
-                     <option value="<?=$curso["id_matCurFat"]?>"><?=$curso["nome_mat"]?> de <?=$curso["nome_cur"]?></option>
+                     <option value="<?=$curso["id_matCurFat"]?>"><?=$curso["nome_mat"]?> // <?=$curso["nome_cur"]?></option>
                     <?php
                      }
                      ?>
@@ -103,7 +104,7 @@
 
                 <div id="containerNumero" style="display: none; margin-top: 10px;">
                     <label for="numero">Qtd. de H.A.E. para Estágio Supervisionado:</label>
-                    <input type="number" id="numeroHAE" name="numeroHAE" disabled>
+                    <input type="number" id="numeroHAE" name="numeroHAE" >
                 </div>
 
 
@@ -112,7 +113,7 @@
                 <input type="date" id="inicio" name="inicio" required>
 
                 <label for="termino">Término do Projeto:</label>
-                <input type="date" id="termino" name="termino" required onblur="validarDatas()">
+                <input type="date" id="termino" name="termino" required >
 
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">

@@ -3,7 +3,7 @@
 $host = "localhost";
 $dbname = "siga";
 $user = "root";
-$password = "";
+$password = "aluno";
 $connSiga = new PDO('mysql:hostname='.$host.';dbname='.$dbname,$user,$password);
 
 
