@@ -7,10 +7,9 @@ USE CEOS;
 CREATE TABLE projeto (
     id_projeto INT PRIMARY KEY AUTO_INCREMENT,
     id_professor INT NOT NULL,
-    id_fatec INT NOT NULL,
-    id_curso INT NOT NULL,
+    id_curFat INT NOT NULL,
     qtd_horas INT NOT NULL,
-    tipo_hae ENUM('Estágio Supervisionado', 'Trabalho de Graduação') NOT NULL,
+    tipo_hae VARCHAR(20) NOT NULL,
     data_inicio DATE NOT NULL,
     data_termino DATE NOT NULL,
     metas VARCHAR(255),
@@ -20,8 +19,7 @@ CREATE TABLE projeto (
     resultado_esperado VARCHAR(255),
     metodologia VARCHAR(255),
     estado INT DEFAULT 0,
-    data_submissao TIMESTAMP NULL,
-    data_avaliacao TIMESTAMP NULL
+    data_submissao TIMESTAMP NULL
 );
  
 -- Tabela Cronograma
@@ -36,16 +34,17 @@ CREATE TABLE cronograma (
 
 CREATE TABLE relatorio (
     id_relatorio INT PRIMARY KEY AUTO_INCREMENT,
-    fk_idProjeto INT PRIMARY KEY NOT NULL,
+    fkId_Projeto INT NOT NULL,
+    data_relatorio DATE NOT NULL,
     descricao VARCHAR(255) NOT NULL
-);''
+);
  
 -- Chave estrangeira para cronograma
 ALTER TABLE cronograma
 ADD CONSTRAINT fk_cronograma_projeto
-FOREIGN KEY (fkId_projeto) REFERENCES projeto(fkId_projeto);
+FOREIGN KEY (fkId_projeto) REFERENCES projeto(Id_projeto);
 
 -- Chave estrangeira para cronograma
 ALTER TABLE relatorio
 ADD CONSTRAINT fk_relatorio_projeto
-FOREIGN KEY (fkId_projeto) REFERENCES projeto(fkId_projeto);
+FOREIGN KEY (fkId_projeto) REFERENCES projeto(id_projeto);
