@@ -1,4 +1,4 @@
-
+    
         // Recuperar os dados do localStorage
         const formData = JSON.parse(localStorage.getItem("formData"));
 

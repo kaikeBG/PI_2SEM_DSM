@@ -15,8 +15,8 @@ class Hae
     }
     public function newHae($idProf, $idCurFat, $qtdHoras, $tipo, $dataIn, $dataFi, $meta, $obj, $jus, $rec, $res, $met)
     {
-        $sql = "INSERT INTO projeto(id_professor, id_curFat, qtd_horas, tipo_hae, data_inicio, data_termino, metas, objetivos, justificativas, recursos, resultado_esperado, metodologia)
-            VALUES (:id_professor, :id_curFat, :qtd_horas, :tipo_hae, :data_inicio, :data_termino, :metas, :objetivos, :justificativas, :recursos, :resultado_esperado, :metodologia)";
+        $sql = "INSERT INTO projeto(id_professor, id_curFat, qtd_horas, tipo_hae, data_inicio, data_termino, metas, objetivos, justificativas, recursos, resultado_esperado, metodologia, data_submissao)
+            VALUES (:id_professor, :id_curFat, :qtd_horas, :tipo_hae, :data_inicio, :data_termino, :metas, :objetivos, :justificativas, :recursos, :resultado_esperado, :metodologia, CURDATE())";
 
         $stmt = $this->pdo->prepare($sql);
 
@@ -35,5 +35,14 @@ class Hae
 
         return $stmt->execute();
 
+    }
+
+    public function getHae($id){
+        $sql = "SELECT * FROM projeto where id_professor = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

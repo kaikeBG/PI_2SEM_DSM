@@ -120,7 +120,7 @@
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">
                     <label for="metas">Descreva as metas do projeto:</label>
-                    <textarea id="metas" rows="3"></textarea>
+                    <textarea id="metas" name    = "metas" rows="3"></textarea>
                 </div>
 
                 <button type="button" id="prev-1" class="next-btn">Voltar</button>
@@ -130,19 +130,19 @@
             <!-- Parte 3 -->
             <div class="form-part" id="part-3">
                 <div class="titulo-sessao">Objetivos do Projeto</div>
-                <textarea id="objetivos" rows="3"></textarea>
+                <textarea id="objetivos" name="objet" rows="3"></textarea>
 
                 <div class="titulo-sessao">Justificativas do Projeto</div>
-                <textarea id="justificativas" rows="3"></textarea>
+                <textarea id="justificativas" name="just" rows="3"></textarea>
 
                 <div class="titulo-sessao">Recursos Materiais e Humanos</div>
-                <textarea id="recursos" rows="3"></textarea>
+                <textarea id="recursos" name="recur" rows="3"></textarea>
 
                 <div class="titulo-sessao">Resultado Esperado</div>
-                <textarea id="resultado" rows="2"></textarea>
+                <textarea id="resultado" name ="resul" rows="2"></textarea>
 
                 <div class="titulo-sessao">Metodologia</div>
-                <textarea id="metodologia" rows="2"></textarea>
+                <textarea id="metodologia" name="metodo" rows="2"></textarea>
 
                 <div class="titulo-sessao">Cronograma de Execução</div>
                 <table>
