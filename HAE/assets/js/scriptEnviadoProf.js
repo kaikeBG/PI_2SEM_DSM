@@ -97,34 +97,13 @@
             // Adicionar o evento de clique para o botão de editar
             editButton.addEventListener('click', function () {
                 // A função openEditForm agora é chamada com os dados da linha
-                openEditForm(newRow.cells[0].textContent, newRow.cells[1].textContent, newRow.cells[2].textContent, newRow.cells[3].textContent);
+                window.location.href = "../view/editarHAE.php";
             });
             editCell.appendChild(editButton);
         }
 
-        // Função para abrir o formulário de edição e preencher os campos com as informações
-        function openEditForm(id, professor, date, title) {
-            // Preencher os campos do formulário com as informações passadas
-            document.getElementById("edit-id").value = id;
-            document.getElementById("edit-name").value = professor;
-            document.getElementById("edit-date").value = date;
-            document.getElementById("edit-type").value = title;
-
-            // Exibir o modal
-            document.getElementById("editModal").style.display = "block";
-        }
-
-        // Função para fechar o formulário de edição
-        function closeEditForm() {
-            document.getElementById("editModal").style.display = "none";
-        }
-
-        // Fechar o modal se o usuário clicar fora do conteúdo do modal
-        window.onclick = function (event) {
-            if (event.target == document.getElementById("editModal")) {
-                closeEditForm();
-            }
-        };
+        //Função para abrir o formulário de edição e preencher os campos com as informações
+       
 
         // Função para atualizar o nome do arquivo no botão
         function updateFileName(event, rowIndex) {
