@@ -19,7 +19,7 @@ class Professor
         $sql = "SELECT id_pro, nome_pro FROM professor WHERE id_pro = :login and senha_pro = :senha";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":login", $login);
-        $stmt->bindParam(":senhas", $senha);
+        $stmt->bindParam(":senha", $senha);
 
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -60,6 +60,28 @@ class Professor
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":login", $login);
         $stmt->bindParam(":senha", $senha);
+
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getFats($idProf, $idFat=FALSE){
+        $sql = "SELECT f.id_fat, f.nome_fat
+        FROM materia_curso_fatec mcf
+        JOIN curso_fatec cf ON mcf.idCurFat_matCurFat = cf.id_curFat
+        JOIN fatec f ON cf.idFat_curFat = f.id_fat
+        WHERE mcf.idPro_matCurFat = :idPro";
+
+        if($idFat){
+            $sql .= "AND f.id_fat = :fat";
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(":idPro", $idProf);
+
+        if($idFat){
+            $stmt->bindParam(":fat", $idFat);
+        }
 
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);

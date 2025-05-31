@@ -15,7 +15,7 @@ if($role == "coordenador"){
         header("Location: ../index.php?e=1");
     }
 }else if($role == "professor"){
-    $res = $prof->getCord($username, $password);
+    $res = $prof->getProf($username, $password);
     if($res){
         $_SESSION["id"] = $username;
         $_SESSION["nome"] = $res["nome_pro"];

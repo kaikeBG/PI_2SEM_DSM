@@ -58,7 +58,7 @@
             <!-- Parte 1 -->
             <div class="form-part active" id="part-1">
                 <h1>Inscrição - H.A.E.</h1>
-
+                
                 <label for="professor">Professor(a):</label>
                 <input type="text" id="professor" name="professor" value="<?=$formData["nome_pro"]?>" disabled>
 

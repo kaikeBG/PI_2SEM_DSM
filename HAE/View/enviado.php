@@ -1,6 +1,15 @@
 <?php
 session_start();
-var_dump($_SESSION);
+extract($_SESSION);
+require "../Model/Hae.php";
+require "../Model/Professor.php";
+$hae = new Hae();
+$prof = new Professor();
+$formData = $prof->getFormData($id);
+$haeData = $hae->getHae($id);
+
+var_dump($formData);
+var_dump($haeData);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +30,21 @@ var_dump($_SESSION);
     require "./components/header.php";
     require "./components/vlibras.php";
     ?>
-
+    <div id="modalRetorno">
+        <form action="../Controller/enviarRetorno.php" method="post">
+            <div id="camposModalRetorno">
+                <label for="retorno">Retorno</label>
+                <textarea name="retorno" id="retorno"></textarea>
+                <label for="status">status</label>
+                <Select name="status">
+                    <option value="0">indeferido</option>
+                    <option value="1">parcialmente deferido</option>
+                    <option value="2">deferido</option>
+                </Select>
+            </div>
+            <button type="submit">enviar</button>
+        </form>
+    </div>
 
     <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
@@ -46,12 +69,31 @@ var_dump($_SESSION);
                     <th>Tipo de Atividade</th>
                     <th>Status</th>
                     <th>Edital</th>
-                    <th>Relatorio</th>
+                    <th>Retorno</th>
                 </tr>
 
             </thead>
             <tbody id="formTableBody">
-                <!-- Linhas serão adicionadas aqui dinamicamente -->
+                <?php
+                $status = ["indeferido", "parcial", "deferido"];
+                foreach ($haeData as $key => $proj) {
+                ?>
+                <tr>
+                    <td><?=$proj["id_projeto"]?></td>
+                    <td><?=$formData["nome_pro"]?></td>
+                    <td><?=$proj["data_submissao"]?></td>
+                    <td><?=$proj["tipo_hae"]?></td>
+                    <td><span style="color: green;"><?=$status[$proj["estado"]]?></span></td>
+                    <td>
+                        <label class="upload-btn">
+                            Ver<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
+                        </label><span class="file-name" id="file-name-1"></span>
+                    </td>
+                    <td>
+                        <button>Enviar</button>
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
         </table>
 

@@ -27,10 +27,14 @@ CREATE TABLE cronograma (
     id_cronograma INT PRIMARY KEY AUTO_INCREMENT,
     fkId_projeto INT NOT NULL,
     mes INT(2) NOT NULL,
-    atividade VARCHAR(255) NOT NULL,
-    concluido BOOLEAN DEFAULT FALSE,
-    data_conclusao DATE NULL
+    atividade VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE retorno{
+    id_retorno INT PRIMARY KEY AUTO_INCREMENT,
+    fkId_projeto INT NOT NULL,
+    retorno VARCHAR(255) NOT NULL
+}
 
 CREATE TABLE relatorio (
     id_relatorio INT PRIMARY KEY AUTO_INCREMENT,
