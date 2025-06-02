@@ -97,11 +97,13 @@ document.querySelector("#next-2").addEventListener("click", function () {
 document.querySelector("#prev-1").addEventListener("click", function () {
     document.getElementById("part-2").style.display = "none";
     document.getElementById("part-1").style.display = "block";
+    updateProgressBar();
 });
 
 document.querySelector("#prev-2").addEventListener("click", function () {
     document.getElementById("part-3").style.display = "none";
     document.getElementById("part-2").style.display = "block";
+    updateProgressBar();
 });
 
 // Validação geral ao submeter o formulário
@@ -113,10 +115,6 @@ function validateForm() {
         return false;
     }
 
-    if (validarDatas()) {
-        alert("A data de término não pode ser anterior à data de início.");
-        return false;
-    };
 
     // Coletando os dados do formulário
     const formData = {

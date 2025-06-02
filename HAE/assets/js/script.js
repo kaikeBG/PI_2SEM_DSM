@@ -76,7 +76,7 @@ document.querySelector("#next-1").addEventListener("click", function () {
         document.getElementById("part-2").style.display = "block";
         updateProgressBar();
     } else {
-                showPopup("Por favor, preencha todos os campos antes de enviar.");
+        showPopup("Por favor, preencha todos os campos antes de enviar.");
     }
 });
 
@@ -90,7 +90,7 @@ document.querySelector("#next-2").addEventListener("click", function () {
         document.getElementById("part-3").style.display = "block";
         updateProgressBar();
     } else {
-                showPopup("Por favor, preencha todos os campos antes de enviar.");
+        showPopup("Por favor, preencha todos os campos antes de enviar.");
     }
 });
 
@@ -113,10 +113,7 @@ function validateForm() {
         return false;
     }
 
-    if (validarDatas()) {
-        alert("A data de término não pode ser anterior à data de início.");
-        return false;
-    };
+    
 
     // Coletando os dados do formulário
     const formData = {

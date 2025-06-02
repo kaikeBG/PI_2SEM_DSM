@@ -23,9 +23,24 @@ var_dump($_SESSION);
     ?>
 
 
-    <div class="logos">
+     <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
         <img src="../assets/img/cps.png" width="14%" alt="">
+        <svg id="logoCeos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+            <defs>
+                <clipPath id="a">
+                <path d="M0 0h1000v1000H0z"/>
+                </clipPath>
+            </defs>
+            <g clip-path="url(#a)">
+                <mask id="b">
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="#fff"/>
+                </mask>
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none"/>
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" mask="url(#b)" stroke-width="232" stroke="red" stroke-linecap="square" stroke-miterlimit="3"/>
+                <path fill="#F4F4F4" d="M665 407h142v186H665zM336 213l72 105-74 50-71-105zM388 676l-82 96-37-32 82-96z"/>
+            </g>
+        </svg>
     </div>
 
     <nav>
@@ -34,6 +49,10 @@ var_dump($_SESSION);
             <li><a href="enviado.php">Acompanhamento</a></li>
         </ul>
     </nav>
+
+    <?php
+    require "./components/selectFatec.php";
+    ?>
 
     <!-- Tabela com os dados enviados -->
     <div class="central">
