@@ -27,7 +27,7 @@
 </head>
 
 <body>
-
+    
     <?php
     require "./components/header.php";
     require "./components/vlibras.php";
@@ -75,11 +75,11 @@
             <div class="progress-bar" id="progress-bar"></div>
         </div>
 
-        <form name="haeForm" onsubmit="return validateForm()">
+        <form name="haeForm" id="haeForm" method="POST" action="../Controller/cadastroHae.php" onsubmit="return validateForm()">
             <!-- Parte 1 -->
             <div class="form-part active" id="part-1">
                 <h1>Inscrição - H.A.E.</h1>
-
+                
                 <label for="professor">Professor(a):</label>
                 <input type="text" id="professor" name="professor" value="<?=$formData["nome_pro"]?>" disabled>
 
@@ -102,8 +102,8 @@
                     <option value="Não">Não</option>
                 </select>
 
-                <label for="tipo-hae">Tipo de HAE que está solicitando:</label>
-                <select id="tipo-hae" name="tipo-hae" required>
+                <label for="tipoHae">Tipo de HAE que está solicitando:</label>
+                <select id="tipoHae" name="tipoHae" required>
                     <option value="Estágio Supervisionado">Estágio Supervisionado</option>
                     <option value="Trabalho de Graduação">Trabalho de Graduação</option>
                 </select>
@@ -111,7 +111,7 @@
                 <button type="button" id="next-1" class="next-btn">Próximo</button>
             </div>
 
-            <!-- Parte 2 -->
+            <!-- P arte 2 -->
             <div class="form-part" id="part-2">
                 <label for="opcao">Escolha uma curso:</label>
                     <select id="opcao" name="opcao" onchange="mostrarInput()">
@@ -122,7 +122,7 @@
                      <option value="<?=$curso["id_matCurFat"]?>"><?=$curso["nome_mat"]?> // <?=$curso["nome_cur"]?></option>
                     <?php
                      }
-                     ?>
+                     ?>       
                     </select>
 
                 <div id="containerNumero" style="display: none; margin-top: 10px;">
@@ -141,7 +141,7 @@
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">
                     <label for="metas">Descreva as metas do projeto:</label>
-                    <textarea id="metas" rows="3"></textarea>
+                    <textarea id="metas" name    = "metas" rows="3"></textarea>
                 </div>
 
                 <button type="button" id="prev-1" class="next-btn">Voltar</button>
@@ -151,19 +151,19 @@
             <!-- Parte 3 -->
             <div class="form-part" id="part-3">
                 <div class="titulo-sessao">Objetivos do Projeto</div>
-                <textarea id="objetivos" rows="3"></textarea>
+                <textarea id="objetivos" name="objet" rows="3"></textarea>
 
                 <div class="titulo-sessao">Justificativas do Projeto</div>
-                <textarea id="justificativas" rows="3"></textarea>
+                <textarea id="justificativas" name="just" rows="3"></textarea>
 
                 <div class="titulo-sessao">Recursos Materiais e Humanos</div>
-                <textarea id="recursos" rows="3"></textarea>
+                <textarea id="recursos" name="recur" rows="3"></textarea>
 
                 <div class="titulo-sessao">Resultado Esperado</div>
-                <textarea id="resultado" rows="2"></textarea>
+                <textarea id="resultado" name ="resul" rows="2"></textarea>
 
                 <div class="titulo-sessao">Metodologia</div>
-                <textarea id="metodologia" rows="2"></textarea>
+                <textarea id="metodologia" name="metodo" rows="2"></textarea>
 
                 <div class="titulo-sessao">Cronograma de Execução</div>
                 <table>

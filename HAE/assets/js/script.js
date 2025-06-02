@@ -108,77 +108,58 @@ document.querySelector("#prev-2").addEventListener("click", function () {
 
 function validateForm() {
     event.preventDefault()
+
     if (!checkPartCompleted("part-1") || !checkPartCompleted("part-2") || !checkPartCompleted("part-3")) {
-        alert("Por favor, preencha todos os campos antes de enviar.");
+        showPopup("Por favor, preencha todos os campos antes de enviar.");
         return false;
     }
 
-    
 
-    // Coletando os dados do formulário
-    const formData = {
-        professor: document.querySelector("#professor").value,
-        email: document.querySelector("#email").value,
-        rg: document.querySelector("#rg").value,
-        matricula: document.querySelector("#matricula").value,
-        horaAula: document.querySelector("#hora-aula").value,
-        outrasFatecs: document.querySelector("#outras-fatecs").value,
-        tipoHAE: document.querySelector("#tipo-hae").value,
-        metas: document.querySelector("#metas").value,
-        objetivos: document.querySelector("#objetivos").value,
-        justificativas: document.querySelector("#justificativas").value,
-        recursos: document.querySelector("#recursos").value,
-        resultado: document.querySelector("#resultado").value,
-        metodologia: document.querySelector("#metodologia").value
-    };
 
-    // Armazenar os dados no localStorage
-    localStorage.setItem("formData", JSON.stringify(formData));
-
-    window.location.href = "enviadoprof.php";
+    document.querySelector("#haeForm").submit();
 
 }
-function gerarPDF() {
-    const professor = document.getElementById("professor").value;
-    const email = document.getElementById("email").value;
-    const rg = document.getElementById("rg").value;
-    const matricula = document.getElementById("matricula").value;
-    const horaAula = document.getElementById("hora-aula").value;
-    const outrasFatecs = document.getElementById("outras-fatecs").value;
-    const tipoHAE = document.getElementById("tipo-hae").value;
-    const metas = document.getElementById("metas").value;
-    const objetivos = document.getElementById("objetivos").value;
-    const justificativas = document.getElementById("justificativas").value;
-    const recursos = document.getElementById("recursos").value;
-    const resultado = document.getElementById("resultado").value;
-    const metodologia = document.getElementById("metodologia").value;
+// function gerarPDF() {
+//     const professor = document.getElementById("professor").value;
+//     const email = document.getElementById("email").value;
+//     const rg = document.getElementById("rg").value;
+//     const matricula = document.getElementById("matricula").value;
+//     const horaAula = document.getElementById("hora-aula").value;
+//     const outrasFatecs = document.getElementById("outras-fatecs").value;
+//     const tipoHAE = document.getElementById("tipo-hae").value;
+//     const metas = document.getElementById("metas").value;
+//     const objetivos = document.getElementById("objetivos").value;
+//     const justificativas = document.getElementById("justificativas").value;
+//     const recursos = document.getElementById("recursos").value;
+//     const resultado = document.getElementById("resultado").value;
+//     const metodologia = document.getElementById("metodologia").value;
 
-    const doc = new jsPDF();
+//     const doc = new jsPDF();
 
-    // Adicionando título e dados do formulário no PDF
-    doc.setFontSize(18);
-    doc.text("Formulário HAE", 20, 20);
+//     // Adicionando título e dados do formulário no PDF
+//     doc.setFontSize(18);
+//     doc.text("Formulário HAE", 20, 20);
 
-    doc.setFontSize(12);
-    doc.text("Professor(a): " + professor, 20, 30);
-    doc.text("E-mail: " + email, 20, 40);
-    doc.text("RG: " + rg, 20, 50);
-    doc.text("Matrícula: " + matricula, 20, 60);
-    doc.text("Hora-aula semanal: " + horaAula, 20, 70);
-    doc.text("Aula em outras Fatecs: " + outrasFatecs, 20, 80);
-    doc.text("Tipo de HAE: " + tipoHAE, 20, 90);
+//     doc.setFontSize(12);
+//     doc.text("Professor(a): " + professor, 20, 30);
+//     doc.text("E-mail: " + email, 20, 40);
+//     doc.text("RG: " + rg, 20, 50);
+//     doc.text("Matrícula: " + matricula, 20, 60);
+//     doc.text("Hora-aula semanal: " + horaAula, 20, 70);
+//     doc.text("Aula em outras Fatecs: " + outrasFatecs, 20, 80);
+//     doc.text("Tipo de HAE: " + tipoHAE, 20, 90);
 
-    // Adicionando mais seções
-    doc.text("Metas do Projeto: " + metas, 20, 110);
-    doc.text("Objetivos do Projeto: " + objetivos, 20, 120);
-    doc.text("Justificativas: " + justificativas, 20, 130);
-    doc.text("Recursos: " + recursos, 20, 140);
-    doc.text("Resultado Esperado: " + resultado, 20, 150);
-    doc.text("Metodologia: " + metodologia, 20, 160);
+//     // Adicionando mais seções
+//     doc.text("Metas do Projeto: " + metas, 20, 110);
+//     doc.text("Objetivos do Projeto: " + objetivos, 20, 120);
+//     doc.text("Justificativas: " + justificativas, 20, 130);
+//     doc.text("Recursos: " + recursos, 20, 140);
+//     doc.text("Resultado Esperado: " + resultado, 20, 150);
+//     doc.text("Metodologia: " + metodologia, 20, 160);
 
-    // Salvar o PDF
-    doc.save("formulario_hae.pdf");
-}
+//     // Salvar o PDF
+//     doc.save("formulario_hae.pdf");
+// }
 
 
 

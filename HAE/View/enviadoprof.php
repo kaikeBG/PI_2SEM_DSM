@@ -1,6 +1,15 @@
 <?php
 session_start();
-var_dump($_SESSION);
+extract($_SESSION);
+require "../Model/Hae.php";
+require "../Model/Professor.php";
+$hae = new Hae();
+$prof = new Professor();
+$formData = $prof->getFormData($id);
+$haeData = $hae->getHae($id);
+
+var_dump($formData);
+var_dump($haeData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +81,33 @@ var_dump($_SESSION);
                 </tr>
             </thead>
             <tbody id="formTableBody">
-                <!-- Linhas serão adicionadas aqui dinamicamente -->
+                <?php
+                $status = ["indeferido", "parcial", "deferido"];
+                foreach ($haeData as $key => $proj) {
+                ?>
+                <tr>
+                    <td><?=$proj["id_projeto"]?></td>
+                    <td><?=$formData["nome_pro"]?></td>
+                    <td><?=$proj["data_submissao"]?></td>
+                    <td><?=$proj["tipo_hae"]?></td>
+                    <td><span style="color: green;"><?=$status[$proj["estado"]]?></span></td>
+                    <td>
+                        <label class="upload-btn">
+                            Enviar<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
+                        </label><span class="file-name" id="file-name-1"></span>
+                    </td>
+                    <td>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#e8eaed">
+                                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path>
+                            </svg>
+                        </button>
+                    </td>
+                    <td>
+                        <button>Editar</button>
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
         </table>
         <!-- Modal de Edição do Formulário -->
@@ -98,7 +133,7 @@ var_dump($_SESSION);
             </div>
         </div>
     </div>
-    
+
     </div>
 
 
