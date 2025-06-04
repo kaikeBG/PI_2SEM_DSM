@@ -61,7 +61,8 @@ nav ul li a {
 
 .central {
   width: 60%;
-  margin: 0 auto;
+  margin-left: 20%;
+  margin-bottom: 10%;
   border-color: black;
 }
 

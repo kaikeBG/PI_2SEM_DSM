@@ -20,9 +20,19 @@ var_dump($haeData);
     <title>Formulário Enviado</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script defer src="../assets/js/scriptEnviadoProf.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit" />    <script defer src="../assets/js/scriptEnviadoProf.js"></script>
     <!-- Link CDN do jsPDF -->
 </head>
+
+
+<div id="relatorioModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeRelatorioModal()">&times;</span>
+        <h2>Escrever Relatório</h2>
+        <textarea id="relatorioTextarea" rows="8" cols="50" placeholder="Escreva o relatório aqui..."></textarea><br>
+        <button onclick="enviarRelatorio()">Enviar</button>
+    </div>
+</div>
 
 <body>
 
@@ -92,9 +102,7 @@ var_dump($haeData);
                     <td><?=$proj["tipo_hae"]?></td>
                     <td><span style="color: green;"><?=$status[$proj["estado"]]?></span></td>
                     <td>
-                        <label class="upload-btn">
-                            Enviar<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
-                        </label><span class="file-name" id="file-name-1"></span>
+                        <button onclick="openRelatorioModal()">Enviar</button>
                     </td>
                     <td>
                         <button>
@@ -110,28 +118,7 @@ var_dump($haeData);
                 <?php } ?>
             </tbody>
         </table>
-        <!-- Modal de Edição do Formulário -->
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeEditForm()">&times;</span>
-                <h2>Editar Informações</h2>
-                <form id="editForm" class="editForm">
-                    <label for="edit-id">ID:</label>
-                    <input type="text" id="edit-id" name="id" disabled><br>
-
-                    <label for="edit-name">Nome do Professor:</label>
-                    <input type="text" id="edit-name" name="professor"><br>
-
-                    <label for="edit-date">Data de Envio:</label>
-                    <input type="text" id="edit-date" name="date" disabled><br>
-
-                    <label for="edit-type">Título da HAE:</label>
-                    <input type="text" id="edit-type" name="title"><br>
-
-                    <button type="submit">Salvar</button>
-                </form>
-            </div>
-        </div>
+        
     </div>
 
     </div>

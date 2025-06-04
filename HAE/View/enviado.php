@@ -21,16 +21,13 @@ var_dump($haeData);
     <title>Coordenador</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=reply" />
+
     <script defer src="../assets/js/scriptEnviado.js"></script>
+
 </head>
 
-<body>
-
-    <?php
-    require "./components/header.php";
-    require "./components/vlibras.php";
-    ?>
-    <div id="modalRetorno">
+<div id="modalRetorno"  style="display:none;">
         <form action="../Controller/enviarRetorno.php" method="post">
             <div id="camposModalRetorno">
                 <label for="retorno">Retorno</label>
@@ -44,7 +41,15 @@ var_dump($haeData);
             </div>
             <button type="submit">enviar</button>
         </form>
-    </div>
+</div>
+
+<body>
+
+    <?php
+    require "./components/header.php";
+    require "./components/vlibras.php";
+    ?>
+    
 
      <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
@@ -86,7 +91,6 @@ var_dump($haeData);
                     <th>Nome do Professor</th>
                     <th>Data de Envio</th>
                     <th>Tipo de Atividade</th>
-                    <th>Status</th>
                     <th>Edital</th>
                     <th>Retorno</th>
                 </tr>
@@ -116,16 +120,6 @@ var_dump($haeData);
             </tbody>
         </table>
 
-        <!-- Popup de Justificativa -->
-        <div id="justificationModal" class="justification-modal">
-            <div class="justification-modal-content">
-                <span class="close" onclick="closeJustificationForm()">&times;</span>
-                <h2>Justificativa para Status </h2>
-                <textarea id="justification-text" rows="4" cols="50"
-                    placeholder="Escreva sua justificativa..."></textarea><br>
-                <button onclick="submitJustification()">Salvar Justificativa</button>
-            </div>
-        </div>
     </div>
 
 </body>
