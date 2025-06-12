@@ -36,6 +36,42 @@ class Hae
         return $stmt->execute();
 
     }
+    public function editHae($idProjeto, $idProf, $idCurFat, $qtdHoras, $tipo, $dataIn, $dataFi, $meta, $obj, $jus, $rec, $res, $met)
+    {
+        $sql = "UPDATE projeto
+        SET id_professor = :id_professor,
+            id_curFat = :id_curFat,
+            qtd_horas = :qtd_horas,
+            tipo_hae = :tipo_hae,
+            data_inicio = :data_inicio,
+            data_termino = :data_termino,
+            metas = :metas,
+            objetivos = :objetivos,
+            justificativas = :justificativas,
+            recursos = :recursos,
+            resultado_esperado = :resultado_esperado,
+            metodologia = :metodologia
+        WHERE id_projeto = :id_projeto";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindParam(':id_professor', $idProf);
+        $stmt->bindParam(':id_curFat', $idCurFat);
+        $stmt->bindParam(':qtd_horas', $qtdHoras);
+        $stmt->bindParam(':tipo_hae', $tipo);
+        $stmt->bindParam(':data_inicio', $dataIn);
+        $stmt->bindParam(':data_termino', $dataFi);
+        $stmt->bindParam(':metas', $meta);
+        $stmt->bindParam(':objetivos', $obj);
+        $stmt->bindParam(':justificativas', $jus);
+        $stmt->bindParam(':recursos', $rec);
+        $stmt->bindParam(':resultado_esperado', $res);
+        $stmt->bindParam(':metodologia', $met);
+        $stmt->bindParam(':id_projeto', $idProjeto);
+        
+        return $stmt->execute();
+
+    }
 
     public function getHae($id = FALSE){
         $sql = "SELECT * FROM projeto ";

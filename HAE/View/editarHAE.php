@@ -1,10 +1,16 @@
 <?php
-    session_start();
-    extract($_SESSION);
-    require("../Model/Professor.php");
-    $prof = new Professor();
-    $cur = $prof->getCurProf($id);
-    $formData = $prof->getFormData($id);
+session_start();
+extract($_SESSION);
+extract($_GET);
+require("../Model/Professor.php");
+require("../Model/Hae.php");
+$prof = new Professor();
+$hae = new Hae();
+$cur = $prof->getCurProf($id);
+$formData = $prof->getFormData($id);
+$haeData = $hae->getHae($idProj);
+// $haeData = $haeData[0];
+var_dump($haeData)
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="../assets/js/scriptEditarHae.js" defer></script> <!-- Carrega o JS externo -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
 
 </head>
 
@@ -35,26 +41,26 @@
     ?>
 
 
-     <div class="logos">
+    <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
         <img src="../assets/img/cps.png" width="14%" alt="">
         <svg id="logoCeos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
             <defs>
                 <clipPath id="a">
-                <path d="M0 0h1000v1000H0z"/>
+                    <path d="M0 0h1000v1000H0z" />
                 </clipPath>
             </defs>
             <g clip-path="url(#a)">
                 <mask id="b">
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="#fff"/>
+                    <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="#fff" />
                 </mask>
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none"/>
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" mask="url(#b)" stroke-width="232" stroke="red" stroke-linecap="square" stroke-miterlimit="3"/>
-                <path fill="#F4F4F4" d="M665 407h142v186H665zM336 213l72 105-74 50-71-105zM388 676l-82 96-37-32 82-96z"/>
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" />
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" mask="url(#b)" stroke-width="232" stroke="red" stroke-linecap="square" stroke-miterlimit="3" />
+                <path fill="#F4F4F4" d="M665 407h142v186H665zM336 213l72 105-74 50-71-105zM388 676l-82 96-37-32 82-96z" />
             </g>
         </svg>
     </div>
-   
+
 
     <nav>
         <ul>
@@ -80,25 +86,34 @@
                 <h1>Editar - H.A.E.</h1>
 
                 <label for="professor">Professor(a):</label>
-                <input type="text" id="professor" name="professor" value="<?=$formData["nome_pro"]?>" disabled>
+                <input type="text" id="professor" name="professor" value="<?= $formData["nome_pro"] ?>" disabled>
 
                 <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" value="<?=$formData["email_pro"]?>" disabled>
+                <input type="email" id="email" name="email" value="<?= $formData["email_pro"] ?>" disabled>
 
                 <label for="rg">R.G.:</label>
-                <input type="text" id="rg" name="rg" value="<?=$formData["rg_pro"]?>" disabled>
+                <input type="text" id="rg" name="rg" value="<?= $formData["rg_pro"] ?>" disabled>
 
                 <label for="matricula">Matrícula:</label>
-                <input type="text" id="matricula" name="matricula" value="<?=$formData["id_pro"]?>" disabled>
+                <input type="text" id="matricula" name="matricula" value="<?= $formData["id_pro"] ?>" disabled>
 
                 <label for="hora-aula">Hora-aula semanal na Fatec:</label>
-                <input type="number" id="hora-aula" name="hora-aula" value="<?=$formData["tempoHae"]?>" disabled>
+                <input type="number" id="hora-aula" name="hora-aula" value="<?= $formData["tempoHae"] ?>" disabled>
 
                 <label for="outras-fatecs">Tem aula atribuída em outra(s) Fatec(s)?</label>
                 <select id="outras-fatecs" name="outras-fatecs" required>
-                    <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
+                    <?php
+                    $fats = $prof->getFats($id);
+                    if (count($fats) > 1) {
+                    ?>
+                        <option value="Sim">Sim</option>
+                    <?php
+                    } else {
+                    ?>
+                        <option value="Não">Não</option>
+                    <?php
+                    }
+                    ?>
                 </select>
 
                 <label for="tipo-hae">Tipo de HAE que está solicitando:</label>
@@ -113,20 +128,20 @@
             <!-- Parte 2 -->
             <div class="form-part" id="part-2">
                 <label for="opcao">Escolha uma curso:</label>
-                    <select id="opcao" name="opcao" onchange="mostrarInput()">
-                     <option disabled selected value>-- SLECIONE O CURSO --</option>
-                     <?php
-                     foreach ($cur as $key => $curso) {
-                     ?>
-                     <option value="<?=$curso["id_matCurFat"]?>"><?=$curso["nome_mat"]?> // <?=$curso["nome_cur"]?></option>
+                <select id="opcao" name="opcao" onchange="mostrarInput()">
+                    <option disabled selected value>-- SLECIONE O CURSO --</option>
                     <?php
-                     }
-                     ?>
-                    </select>
+                    foreach ($cur as $key => $curso) {
+                    ?>
+                        <option value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
 
                 <div id="containerNumero" style="display: none; margin-top: 10px;">
                     <label for="numero">Qtd. de H.A.E. para Estágio Supervisionado:</label>
-                    <input type="number" id="numeroHAE" name="numeroHAE" >
+                    <input type="number" id="numeroHAE" name="numeroHAE">
                 </div>
 
 
@@ -135,7 +150,7 @@
                 <input type="date" id="inicio" name="inicio" required>
 
                 <label for="termino">Término do Projeto:</label>
-                <input type="date" id="termino" name="termino" required >
+                <input type="date" id="termino" name="termino" required>
 
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">
@@ -295,7 +310,7 @@
                         </tr>
                     </tbody>
                 </table>
-
+                    <input type="text" require style="diplay: none;" value="">
                 <button type="button" id="prev-2" class="next-btn">Voltar</button>
                 <button type="submit" class="submit-btn">Enviar Formulário</button>
             </div>
@@ -312,6 +327,9 @@
             </div>
         </div>
     </section>
+    <script>
+
+    </script>
 </body>
 
 </html>

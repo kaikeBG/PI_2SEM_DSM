@@ -32,6 +32,7 @@
     require "./components/header.php";
     require "./components/vlibras.php";
     require "./components/modal.php";
+    require "./components/haeVisu.php"
     ?>
 
 
@@ -96,10 +97,19 @@
                 <input type="number" id="hora-aula" name="hora-aula" value="<?=$formData["tempoHae"]?>" disabled>
 
                 <label for="outras-fatecs">Tem aula atribuída em outra(s) Fatec(s)?</label>
-                <select id="outras-fatecs" name="outras-fatecs" required>
-                    <option value="">Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
+                <select id="outras-fatecs" name="outras-fatecs" required >
+                    <?php
+                        $fats = $prof->getFats($id);
+                        if(count($fats)>1){
+                            ?>
+                            <option value="Sim">Sim</option>
+                            <?php
+                        }else{
+                            ?>
+                            <option value="Não">Não</option>
+                            <?php
+                        }
+                    ?>
                 </select>
 
                 <label for="tipoHae">Tipo de HAE que está solicitando:</label>

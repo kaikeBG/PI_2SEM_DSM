@@ -9,7 +9,7 @@ CREATE TABLE projeto (
     id_professor INT NOT NULL,
     id_curFat INT NOT NULL,
     qtd_horas INT NOT NULL,
-    tipo_hae VARCHAR(20) NOT NULL,
+    tipo_hae VARCHAR(30) NOT NULL,
     data_inicio DATE NOT NULL,
     data_termino DATE NOT NULL,
     metas VARCHAR(255),
