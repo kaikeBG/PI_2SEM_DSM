@@ -15,6 +15,9 @@ function closePopup(){
     modal.style.display = "none";
 }
 
+
+
+
 // Função para verificar se a parte anterior foi preenchida corretamente
 function checkPartCompleted(partId) {
     const fields = document.querySelectorAll(`#${partId} input, #${partId} select, #${partId} textarea`);

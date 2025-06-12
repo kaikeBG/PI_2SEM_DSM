@@ -9,7 +9,7 @@ CREATE TABLE projeto (
     id_professor INT NOT NULL,
     id_curFat INT NOT NULL,
     qtd_horas INT NOT NULL,
-    tipo_hae VARCHAR(20) NOT NULL,
+    tipo_hae VARCHAR(35) NOT NULL,
     data_inicio DATE NOT NULL,
     data_termino DATE NOT NULL,
     metas VARCHAR(255),
@@ -30,11 +30,11 @@ CREATE TABLE cronograma (
     atividade VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE retorno{
+CREATE TABLE retorno(
     id_retorno INT PRIMARY KEY AUTO_INCREMENT,
     fkId_projeto INT NOT NULL,
     retorno VARCHAR(255) NOT NULL
-}
+);
 
 CREATE TABLE relatorio (
     id_relatorio INT PRIMARY KEY AUTO_INCREMENT,

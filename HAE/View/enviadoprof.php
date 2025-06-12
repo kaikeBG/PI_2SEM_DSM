@@ -8,8 +8,9 @@ $prof = new Professor();
 $formData = $prof->getFormData($id);
 $haeData = $hae->getHae($id);
 
-var_dump($formData);
-var_dump($haeData);
+//  var_dump($cursos);
+// var_dump($formData);
+// var_dump($haeData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,22 +43,22 @@ var_dump($haeData);
 
     ?>
 
-     <div class="logos">
+    <div class="logos">
         <img src="../assets/img/logo_fatec_cor.png" width="13%" alt="">
         <img src="../assets/img/cps.png" width="14%" alt="">
         <svg id="logoCeos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
             <defs>
                 <clipPath id="a">
-                <path d="M0 0h1000v1000H0z"/>
+                    <path d="M0 0h1000v1000H0z" />
                 </clipPath>
             </defs>
             <g clip-path="url(#a)">
                 <mask id="b">
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="#fff"/>
+                    <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="#fff" />
                 </mask>
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none"/>
-                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" mask="url(#b)" stroke-width="232" stroke="red" stroke-linecap="square" stroke-miterlimit="3"/>
-                <path fill="#F4F4F4" d="M665 407h142v186H665zM336 213l72 105-74 50-71-105zM388 676l-82 96-37-32 82-96z"/>
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" />
+                <circle vector-effect="non-scaling-stroke" cx="487" cy="500" r="320" fill="none" mask="url(#b)" stroke-width="232" stroke="red" stroke-linecap="square" stroke-miterlimit="3" />
+                <path fill="#F4F4F4" d="M665 407h142v186H665zM336 213l72 105-74 50-71-105zM388 676l-82 96-37-32 82-96z" />
             </g>
         </svg>
     </div>
@@ -72,6 +73,7 @@ var_dump($haeData);
 
     <?php
     require "./components/selectFatec.php";
+    require "./components/haeVisu.php";
     ?>
 
 
@@ -95,26 +97,24 @@ var_dump($haeData);
                 $status = ["indeferido", "parcial", "deferido"];
                 foreach ($haeData as $key => $proj) {
                 ?>
-                <tr>
-                    <td><?=$proj["id_projeto"]?></td>
-                    <td><?=$formData["nome_pro"]?></td>
-                    <td><?=$proj["data_submissao"]?></td>
-                    <td><?=$proj["tipo_hae"]?></td>
-                    <td><span style="color: green;"><?=$status[$proj["estado"]]?></span></td>
-                    <td>
-                        <button onclick="openRelatorioModal()">Enviar</button>
-                    </td>
-                    <td>
-                        <button>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#e8eaed">
-                                <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path>
-                            </svg>
-                        </button>
-                    </td>
-                    <td>
-                        <button>Editar</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $proj["id_projeto"] ?></td>
+                        <td><?= $formData["nome_pro"] ?></td>
+                        <td><?= $proj["data_submissao"] ?></td>
+                        <td><?= $proj["tipo_hae"] ?></td>
+                        <td><span style="color: green;"><?= $status[$proj["estado"]] ?></span></td>
+                        <td>
+                            <label class="upload-btn">
+                                Enviar<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
+                            </label><span class="file-name" id="file-name-1"></span>
+                        </td>
+                        <td>
+                            <button onclick="mostrarHae(<?=$key?>)">Ver</button>
+                        </td>
+                        <td>
+                            <button onclick=""><a href="../View/editarHAE.php?idProj=<?=$proj['id_projeto']?>">Editar</a></button>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -122,7 +122,31 @@ var_dump($haeData);
     </div>
 
     </div>
-
+    <script>
+        const dadosHae = []
+        <?php
+        foreach ($haeData as $key => $proj) {
+        ?>
+        dadosHae.push(
+            {
+                <?php
+                    foreach ($proj as $key => $value) {
+                        $valor = $value;
+                        if($key == "id_curFat"){
+                            $cur = $prof->getUniCurProf($id, $value);
+                            $valor = $cur["nome_mat"]." - ".$cur["nome_cur"];
+                        }
+                ?>
+                        <?=$key?>: "<?=$valor?>",
+                <?php
+                    }
+                ?>
+            }
+        )
+        <?php
+        }
+        ?>
+    </script>
 
 
 </body>

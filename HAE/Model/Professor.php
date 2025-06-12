@@ -35,13 +35,35 @@ class Professor
             JOIN materia_curso mc ON mcf.idMatCur_matCurFat = mc.id_matCur
             JOIN materia m ON mc.idMat_matCur = m.id_mat
             JOIN curso c ON mc.idCur_matCur = c.id_cur
-            WHERE mcf.idPro_matCurFat = :idProf;";
+            WHERE mcf.idPro_matCurFat = :idProf";
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":idProf", $id);
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getUniCurProf($id, $idMat)
+    {
+        $sql = "SELECT 
+            m.nome_mat,
+            c.nome_cur,
+            id_matCurFat
+            FROM materia_curso_fatec mcf
+            JOIN materia_curso mc ON mcf.idMatCur_matCurFat = mc.id_matCur
+            JOIN materia m ON mc.idMat_matCur = m.id_mat
+            JOIN curso c ON mc.idCur_matCur = c.id_cur
+            WHERE mcf.idPro_matCurFat = :idProf
+            AND mcf.id_matCurFat = :mat ;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(":idProf", $id);
+        $stmt->bindParam(":mat", $idMat);
+
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 
     public function getFormData($id){
         $sql = "SELECT nome_pro, email_pro, rg_pro, id_pro, tempoHae FROM professor WHERE id_pro = :id;";
@@ -66,7 +88,7 @@ class Professor
     }
 
     public function getFats($idProf, $idFat=FALSE){
-        $sql = "SELECT f.id_fat, f.nome_fat
+        $sql = "SELECT DISTINCT f.id_fat, f.nome_fat
         FROM materia_curso_fatec mcf
         JOIN curso_fatec cf ON mcf.idCurFat_matCurFat = cf.id_curFat
         JOIN fatec f ON cf.idFat_curFat = f.id_fat
@@ -84,7 +106,7 @@ class Professor
         }
 
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
