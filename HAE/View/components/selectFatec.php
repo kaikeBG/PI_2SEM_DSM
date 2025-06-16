@@ -1,7 +1,6 @@
 
 <?php
     $fats = $prof->getFats($id);
-    var_dump(($fats))
 ?>
 
 <div class="container">

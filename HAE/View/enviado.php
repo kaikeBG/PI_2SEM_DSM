@@ -11,8 +11,7 @@ $cron = new Cronograma();
 $formData = $prof->getFormData($id);
 $haeData = $hae->getHae($id);
 
-var_dump($formData);
-var_dump($haeData);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,24 +29,8 @@ var_dump($haeData);
 
 </head>
 
-<div id="modalRetorno"  style="display:none;">
-        <form action="../Controller/enviarRetorno.php" method="post">
-            <div id="camposModalRetorno">
-                <label for="retorno">Retorno</label>
-                <textarea name="retorno" id="retorno"></textarea>
-                <label for="status">status</label>
-                <Select name="status">
-                    <option value="0">indeferido</option>
-                    <option value="1">parcialmente deferido</option>
-                    <option value="2">deferido</option>
-                </Select>
-            </div>
-            <button type="submit">enviar</button>
-        </form>
-</div>
-
 <body>
-
+    
     <?php
     require "./components/header.php";
     require "./components/vlibras.php";
@@ -85,6 +68,23 @@ var_dump($haeData);
     require "./components/selectFatec.php";
     require "./components/haeVisu.php";
     ?>
+    
+    <div id="modalRetorno"  style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;">
+            <form action="../Controller/enviarRetorno.php" method="post">
+                <div id="camposModalRetorno">
+                    <label for="retorno">Retorno</label>
+                    <textarea name="retorno" id="retorno" rows="5"></textarea>
+                    <label for="status">status</label>
+                    <Select name="status">
+                        <option value="0">indeferido</option>
+                        <option value="1">parcialmente deferido</option>
+                        <option value="2">deferido</option>
+                    </Select>
+                </div>
+                <input type="text" style="display: none;" id="id_proj" name="id_proj">
+                <button type="submit">enviar</button>
+            </form>
+    </div>
 
     <!-- Tabela com os dados enviados -->
     <div class="central">

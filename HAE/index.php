@@ -24,6 +24,9 @@ session_unset();
   </style>
 </head>
 <body>
+  <?php
+  require "./HAE/View/components/vlibras.php";
+  ?>
   <div class="login-container">
     <h2>Login do Edital</h2>
     <form action="./Controller/login.php" method="POST" id="loginForm">
