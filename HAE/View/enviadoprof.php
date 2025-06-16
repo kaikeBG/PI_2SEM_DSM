@@ -2,8 +2,10 @@
 session_start();
 extract($_SESSION);
 require "../Model/Hae.php";
+require "../Model/Cronograma.php";
 require "../Model/Professor.php";
 $hae = new Hae();
+$cron = new Cronograma();
 $prof = new Professor();
 $formData = $prof->getFormData($id);
 $haeData = $hae->getHae($id);
@@ -21,7 +23,8 @@ $haeData = $hae->getHae($id);
     <title>Formulário Enviado</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit" />    <script defer src="../assets/js/scriptEnviadoProf.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit" />
+    <script defer src="../assets/js/scriptEnviadoProf.js"></script>
     <!-- Link CDN do jsPDF -->
 </head>
 
@@ -109,40 +112,58 @@ $haeData = $hae->getHae($id);
                             </label><span class="file-name" id="file-name-1"></span>
                         </td>
                         <td>
-                            <button onclick="mostrarHae(<?=$key?>)">Ver</button>
+                            <button onclick="mostrarHae(<?= $key ?>)">Ver</button>
                         </td>
                         <td>
-                            <button onclick=""><a href="../View/editarHAE.php?idProj=<?=$proj['id_projeto']?>">Editar</a></button>
+                            <button onclick=""><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>">Editar</a></button>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-        
+
     </div>
 
     </div>
     <script>
         const dadosHae = []
+
         <?php
         foreach ($haeData as $key => $proj) {
         ?>
-        dadosHae.push(
-            {
+            dadosHae.push({
                 <?php
-                    foreach ($proj as $key => $value) {
-                        $valor = $value;
-                        if($key == "id_curFat"){
-                            $cur = $prof->getUniCurProf($id, $value);
-                            $valor = $cur["nome_mat"]." - ".$cur["nome_cur"];
-                        }
-                ?>
-                        <?=$key?>: "<?=$valor?>",
-                <?php
+                foreach ($proj as $key => $value) {
+                    $valor = $value;
+                    if ($key == "id_curFat") {
+                        $cur = $prof->getUniCurProf($id, $value);
+                        $valor = $cur["nome_mat"] . " - " . $cur["nome_cur"];
                     }
+                    if($key == "id_projeto"){
+                        $cronogras = $cron->getCronograma($valor);
+                        ?>
+                        mes1:<?=$cronogras[0]["mes"]?>,
+                        mes2:<?=$cronogras[1]["mes"]?>,
+                        mes3:<?=$cronogras[2]["mes"]?>,
+                        mes4:<?=$cronogras[3]["mes"]?>,
+                        mes5:<?=$cronogras[4]["mes"]?>,
+                        mes6:<?=$cronogras[5]["mes"]?>,
+                        atv1:"<?=$cronogras[0]["atividade"]?>",
+                        atv2:"<?=$cronogras[1]["atividade"]?>",
+                        atv3:'<?=$cronogras[2]["atividade"]?>',
+                        atv4:"<?=$cronogras[3]["atividade"]?>",
+                        atv5:"<?=$cronogras[4]["atividade"]?>",
+                        atv6:"<?=$cronogras[5]["atividade"]?>",
+                        <?php
+                    }
+
+
+                    ?>
+                    <?= $key ?>: "<?= $valor ?>",
+                <?php
+                }
                 ?>
-            }
-        )
+            })
         <?php
         }
         ?>

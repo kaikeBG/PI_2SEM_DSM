@@ -95,128 +95,44 @@
         <tbody>
             <tr>
                 <td>
-                    <select id="mes" name="mes1">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes1" name="mes1">
                 </td>
-                <td><input disabled type="text" id="atividade-agosto" name="atividade-agosto"
+                <td><input disabled type="text" id="atividade1" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
                 <td>
-                    <select id="mes" name="mes2">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes2" name="mes2">
                 </td>
-                <td><input disabled type="text" id="atividade-agosto" name="atividade-agosto"
+                <td><input disabled type="text" id="atividade2" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
                 <td>
-                    <select id="mes" name="mes3">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes3" name="mes3">
                 </td>
-                <td><input disabled type="text" id="atividade-agosto" name="atividade-agosto"
+                <td><input disabled type="text" id="atividade3" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
                 <td>
-                    <select id="mes" name="mes4">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes4" name="mes4">
                 </td>
-                <td><input disabled type="text" id="atividade-agosto" name="atividade-agosto"
+                <td><input disabled type="text" id="atividade4" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
                 <td>
-                    <select id="mes" name="mes5">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes5" name="mes5">
                 </td>
-                <td><input disabled type="text" id="atividade-setembro" name="atividade-setembro"
+                <td><input disabled type="text" id="atividade5" name="atividade-setembro"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
                 <td>
-                    <select id="mes" name="mes6">
-                        <option value="">-- Selecione o mês -- </option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <input type="text" disabled id="mes6" name="mes6">
                 </td>
-                <td><input disabled type="text" id="atividade-outubro" name="atividade-outubro"
+                <td><input disabled type="text" id="atividade6" name="atividade-outubro"
                         placeholder="Descreva a atividade"></td>
             </tr>
         </tbody>
@@ -225,6 +141,21 @@
 </div>
 
 <script defer>
+        const meses = [
+            "janeiro",
+            "fevereiro",
+            "março",
+            "abril",
+            "maio",
+            "junho",
+            "julho",
+            "agosto",
+            "setembro",
+            "outubro",
+            "novembro",
+            "dezembro"
+        ];
+
     const haeVisu = document.querySelector("#haeVisu")
 
     // Parte 1 - Informações do professor
@@ -250,6 +181,25 @@
     const textareaResultado = document.querySelector("#resultado");
     const textareaMetodologia = document.querySelector("#metodologia");
 
+    const mes1 = document.querySelector("#mes1");
+    const atividade1 = document.querySelector("#atividade1");
+
+    const mes2 = document.querySelector("#mes2");
+    const atividade2 = document.querySelector("#atividade2");
+
+    const mes3 = document.querySelector("#mes3");
+    const atividade3 = document.querySelector("#atividade3");
+
+    const mes4 = document.querySelector("#mes4");
+    const atividade4 = document.querySelector("#atividade4");
+
+    const mes5 = document.querySelector("#mes5");
+    const atividade5 = document.querySelector("#atividade5");
+
+    const mes6 = document.querySelector("#mes6");
+    const atividade6 = document.querySelector("#atividade6");
+
+
 
     function mostrarHae(chave) {
         // Parte 2 - Curso e período
@@ -268,6 +218,20 @@
         textareaRecursos.value = dadosHae[chave]["recursos"]
         textareaResultado.value = dadosHae[chave]["resultado_esperado"]
         textareaMetodologia.value = dadosHae[chave]["metodologia"]
+
+        mes1.value = meses[dadosHae[chave]["mes1"]-1]
+        mes2.value = meses[dadosHae[chave]["mes2"]-1]
+        mes3.value = meses[dadosHae[chave]["mes3"]-1]
+        mes4.value = meses[dadosHae[chave]["mes4"]-1]
+        mes5.value = meses[dadosHae[chave]["mes5"]-1]
+        mes6.value = meses[dadosHae[chave]["mes6"]-1]
+
+        atividade1.value = dadosHae[chave]["atv1"]
+        atividade2.value = dadosHae[chave]["atv2"]
+        atividade3.value = dadosHae[chave]["atv3"]
+        atividade4.value = dadosHae[chave]["atv4"]
+        atividade5.value = dadosHae[chave]["atv5"]
+        atividade6.value = dadosHae[chave]["atv6"]
 
         haeVisu.style.display = "block"
     }

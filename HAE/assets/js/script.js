@@ -23,7 +23,7 @@ function checkPartCompleted(partId) {
     const fields = document.querySelectorAll(`#${partId} input, #${partId} select, #${partId} textarea`);
     for (const field of fields) {
         if (!field.value) {
-            return false; // Caso algum campo não esteja preenchido
+             // Caso algum campo não esteja preenchido
         }
     }
 
