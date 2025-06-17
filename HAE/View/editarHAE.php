@@ -148,7 +148,7 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
 
                         }
                     ?>
-                        <option <?=$selectCur?> value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?></option>
+                        <option <?=$selectCur?> value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?>  // <?= $curso["nome_fat"]?></option>
                     <?php
                     }
                     ?>
