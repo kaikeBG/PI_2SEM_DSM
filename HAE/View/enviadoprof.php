@@ -106,33 +106,26 @@ $haeData = $hae->getHae($id);
                         <td><?= $proj["tipo_hae"] ?></td>
                         <td><span style="color: green;"><?= $status[$proj["estado"]] ?></span></td>
                         <td>
-<<<<<<< HEAD
-                            <button onclick="abrirModalRelatorio()"><span class="material-icons">send</span></button>
-=======
                             <?php
                                 if($proj['retorno']){
                                     ?>
-                                        <button onclick="mostrarRetorno(`<?=$proj['retorno']?>`)">Ver</button>
+                                        <button onclick="mostrarRetorno(`<?=$proj['retorno']?>`)"><span class="material-icons">send</span></button>
                                     <?php
                                 }
                             ?>
->>>>>>> d6adda6dfa8e7f37d872e52236496b6caf6c8dfe
                         </td>
                         <td>
                             <button onclick="mostrarHae(<?= $key ?>)"><span class="material-icons">visibility</span></button>
                         </td>
                         <td>
-<<<<<<< HEAD
-                            <button ><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>" class="sem-estilo"><span class="material-icons" >edit</span></a></button>
-=======
+
                         <?php
                             if($proj["estado"] == 1){
                         ?>
-                            <button onclick=""><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>">Editar</a></button>
+                            <button onclick=""><a class="sem-estilo" href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>"><span class="material-icons" >edit</span></a></button>
                             <?php
                             }
                             ?>
->>>>>>> d6adda6dfa8e7f37d872e52236496b6caf6c8dfe
                         </td>
                     </tr>
                 <?php } ?>
