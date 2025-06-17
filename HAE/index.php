@@ -25,7 +25,7 @@ session_unset();
 </head>
 <body>
   <?php
-  require "./HAE/View/components/vlibras.php";
+  // require "../View/components/vlibras.php"; <-- Está dando erro no login, não sei o motivo
   ?>
   <div class="login-container">
     <h2>Login do Edital</h2>

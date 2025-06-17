@@ -762,3 +762,7 @@ section#govsp-rodape {
   cursor: pointer;
 }
 
+.sem-estilo {
+  color: inherit;
+  text-decoration: none;
+}

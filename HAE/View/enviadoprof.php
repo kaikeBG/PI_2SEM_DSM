@@ -23,7 +23,7 @@ $haeData = $hae->getHae($id);
     <title>Formulário Enviado</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script defer src="../assets/js/scriptEnviadoProf.js"></script>
     <!-- Link CDN do jsPDF -->
 </head>
@@ -107,15 +107,13 @@ $haeData = $hae->getHae($id);
                         <td><?= $proj["tipo_hae"] ?></td>
                         <td><span style="color: green;"><?= $status[$proj["estado"]] ?></span></td>
                         <td>
-                            <label class="upload-btn">
-                                Enviar<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
-                            </label><span class="file-name" id="file-name-1"></span>
+                            <button onclick="abrirModalRelatorio()"><span class="material-icons">send</span></button>
                         </td>
                         <td>
-                            <button onclick="mostrarHae(<?= $key ?>)">Ver</button>
+                            <button onclick="mostrarHae(<?= $key ?>)"><span class="material-icons">visibility</span></button>
                         </td>
                         <td>
-                            <button onclick=""><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>">Editar</a></button>
+                            <button ><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>" class="sem-estilo"><span class="material-icons" >edit</span></a></button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -169,7 +167,14 @@ $haeData = $hae->getHae($id);
         ?>
     </script>
 
-
+    <script>
+        function abrirModalRelatorio() {
+            document.getElementById("relatorioModal").style.display = "block";
+        }
+        function closeRelatorioModal(){
+            document.getElementById("relatorioModal").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>

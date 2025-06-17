@@ -1,4 +1,13 @@
-<div id="haeVisu" style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 70%; width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;">
+<div id="fundoHaeVisu" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;"
+    onclick="closeVisu()">
+</div>
+<div id="haeVisu" style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 70%; width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px; z-index: 999;">
     <!-- Parte 1 -->
     <span class="fechar" onclick="closeVisu()">&times;</span>
 
@@ -156,8 +165,8 @@
             "dezembro"
         ];
 
-    const haeVisu = document.querySelector("#haeVisu")
-
+    const haeVisu = document.querySelector("#haeVisu");
+    
     // Parte 1 - Informações do professor
     const inputProfessor = document.querySelector("#professor");
     const inputEmail = document.querySelector("#email");
@@ -199,6 +208,7 @@
     const mes6 = document.querySelector("#mes6");
     const atividade6 = document.querySelector("#atividade6");
 
+    const fundoHaeVisu = document.getElementById("fundoHaeVisu");
 
 
     function mostrarHae(chave) {
@@ -234,9 +244,11 @@
         atividade6.value = dadosHae[chave]["atv6"]
 
         haeVisu.style.display = "block"
+        fundoHaeVisu.style.display = "block";
     }
 
     function closeVisu(){
-        haeVisu.style.display = "none"
+    haeVisu.style.display = "none";
+    fundoHaeVisu.style.display = "none";  
     }
 </script>

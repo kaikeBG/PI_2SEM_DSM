@@ -23,8 +23,7 @@ $haeData = $hae->getHae($id);
     <title>Coordenador</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=reply" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- <script defer src="../assets/js/scriptEnviado.js"></script> -->
 
 </head>
@@ -68,10 +67,18 @@ $haeData = $hae->getHae($id);
     require "./components/selectFatec.php";
     require "./components/haeVisu.php";
     ?>
-    
-    <div id="modalRetorno"  style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;">
+    <div id="fundoEscuro" style="
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;">
+    </div>
+    <div id="modalRetorno"  style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;   z-index: 1000;">
             <form action="../Controller/enviarRetorno.php" method="post">
                 <div id="camposModalRetorno">
+                    <span class="fechar" onclick="fecharModalRetorno()">&times;</span>
                     <label for="retorno">Retorno</label>
                     <textarea name="retorno" id="retorno" rows="5"></textarea>
                     <label for="status">status</label>
@@ -113,10 +120,10 @@ $haeData = $hae->getHae($id);
                     <td><?=$proj["tipo_hae"]?></td>
                     <td><span style="color: green;"><?=$status[$proj["estado"]]?></span></td>
                     <td>
-                            <button onclick="mostrarHae(<?= $key ?>)">Ver</button>
+                            <button onclick="mostrarHae(<?= $key ?>)"><span class="material-icons" alt="visualizar">visibility</span></button>
                     </td>
                     <td>
-                        <button>Enviar</button>
+                        <button class="btn" onclick="abrirModalRetorno()"><span class="material-icons" alt="enviar">send</span></button>
                     </td>
                 </tr>
                 <?php } ?>
@@ -166,6 +173,20 @@ $haeData = $hae->getHae($id);
         <?php
         }
         ?>
+
+    
+    </script>
+
+    <script>
+        function abrirModalRetorno() {
+        document.getElementById("modalRetorno").style.display = "block";
+        document.getElementById("fundoEscuro").style.display = "block";
+        }
+
+        function fecharModalRetorno() {
+        document.getElementById("modalRetorno").style.display = "none";
+        document.getElementById("fundoEscuro").style.display = "none";
+        }
     </script>
 </body>
 
