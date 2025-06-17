@@ -149,7 +149,7 @@ $haeData = $hae->getHae($id);
                     $valor = $value;
                     if ($key == "id_curFat") {
                         $cur = $prof->getUniCurProf($id, $value);
-                        $valor = $cur["nome_mat"] . " - " . $cur["nome_cur"];
+                        $valor = $cur["nome_mat"] . " - " . $cur["nome_cur"] . " - " . $cur["nome_cur"];
                     }
                     if($key == "id_projeto"){
                         $cronogras = $cron->getCronograma($valor);

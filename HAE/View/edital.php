@@ -129,7 +129,7 @@ $formData = $prof->getFormData($id);
                     <?php
                     foreach ($cur as $key => $curso) {
                     ?>
-                        <option value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?></option>
+                        <option value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"]?> // <?= $curso["nome_fat"]?></option>
                     <?php
                     }
                     ?>

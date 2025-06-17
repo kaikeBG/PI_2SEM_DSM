@@ -30,8 +30,11 @@ class Professor
         $sql = "SELECT 
             m.nome_mat,
             c.nome_cur,
-            id_matCurFat
-            FROM materia_curso_fatec mcf
+            id_matCurFat,
+            nome_fat
+            FROM fatec f
+            JOIN curso_fatec cf ON idFat_curFat = id_fat
+            JOIN materia_curso_fatec mcf ON idCurFat_matCurFat = id_curFat
             JOIN materia_curso mc ON mcf.idMatCur_matCurFat = mc.id_matCur
             JOIN materia m ON mc.idMat_matCur = m.id_mat
             JOIN curso c ON mc.idCur_matCur = c.id_cur
@@ -49,8 +52,11 @@ class Professor
         $sql = "SELECT 
             m.nome_mat,
             c.nome_cur,
-            id_matCurFat
-            FROM materia_curso_fatec mcf
+            id_matCurFat,
+            nome_fat
+            FROM fatec f
+            JOIN curso_fatec cf ON idFat_curFat = id_fat
+            JOIN materia_curso_fatec mcf ON idCurFat_matCurFat = id_curFat
             JOIN materia_curso mc ON mcf.idMatCur_matCurFat = mc.id_matCur
             JOIN materia m ON mc.idMat_matCur = m.id_mat
             JOIN curso c ON mc.idCur_matCur = c.id_cur
