@@ -52,7 +52,8 @@
                 justificativas = :justificativas,
                 recursos = :recursos,
                 resultado_esperado = :resultado_esperado,
-                metodologia = :metodologia
+                metodologia = :metodologia,
+                estado = 0, retorno = null
             WHERE id_projeto = :id_projeto";
 
             $stmt = $this->pdo->prepare($sql);
@@ -98,5 +99,18 @@
             }
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function retornoHae($idProj, $status, $retorno){
+            $sql = "UPDATE projeto SET retorno = :ret, estado = :std WHERE id_projeto = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindParam(":id", $idProj);
+            $stmt->bindParam(":std", $status);
+            $stmt->bindParam(":ret", $retorno);
+
+            $stmt->execute();
+
         }
     }

@@ -77,10 +77,11 @@ $haeData = $hae->getHae($id);
     </div>
     <div id="modalRetorno"  style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;   z-index: 1000;">
             <form action="../Controller/enviarRetorno.php" method="post">
+                    <span class="fechar" onclick="fecharRetorno()">&times;</span>
                 <div id="camposModalRetorno">
                     <span class="fechar" onclick="fecharModalRetorno()">&times;</span>
                     <label for="retorno">Retorno</label>
-                    <textarea name="retorno" id="retorno" rows="5"></textarea>
+                    <textarea name="retorno" id="retorno" rows="8"></textarea>
                     <label for="status">status</label>
                     <Select name="status">
                         <option value="0">indeferido</option>
@@ -123,7 +124,17 @@ $haeData = $hae->getHae($id);
                             <button onclick="mostrarHae(<?= $key ?>)"><span class="material-icons" alt="visualizar">visibility</span></button>
                     </td>
                     <td>
+<<<<<<< HEAD
                         <button class="btn" onclick="abrirModalRetorno()"><span class="material-icons" alt="enviar">send</span></button>
+=======
+                        <?php
+                        if($proj["estado"] == 0){
+                            ?>
+                                <button onclick="modalRetorno(<?=$proj['id_projeto']?>)">Enviar</button>
+                            <?php
+                        }
+                        ?>
+>>>>>>> d6adda6dfa8e7f37d872e52236496b6caf6c8dfe
                     </td>
                 </tr>
                 <?php } ?>
@@ -174,6 +185,7 @@ $haeData = $hae->getHae($id);
         }
         ?>
 
+<<<<<<< HEAD
     
     </script>
 
@@ -186,6 +198,15 @@ $haeData = $hae->getHae($id);
         function fecharModalRetorno() {
         document.getElementById("modalRetorno").style.display = "none";
         document.getElementById("fundoEscuro").style.display = "none";
+=======
+        function modalRetorno(id){
+            document.querySelector("#modalRetorno").style.display = "block";
+            document.querySelector("#id_proj").value = id;
+        }
+        function fecharRetorno(){
+            document.querySelector("#modalRetorno").style.display = "none";
+
+>>>>>>> d6adda6dfa8e7f37d872e52236496b6caf6c8dfe
         }
     </script>
 </body>

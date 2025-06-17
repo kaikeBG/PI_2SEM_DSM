@@ -25,7 +25,11 @@ session_unset();
 </head>
 <body>
   <?php
+<<<<<<< HEAD
   // require "../View/components/vlibras.php"; <-- Está dando erro no login, não sei o motivo
+=======
+    require "./View/components/vlibras.php";
+>>>>>>> d6adda6dfa8e7f37d872e52236496b6caf6c8dfe
   ?>
   <div class="login-container">
     <h2>Login do Edital</h2>
