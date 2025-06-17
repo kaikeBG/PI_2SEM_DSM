@@ -71,9 +71,10 @@ $haeData = $hae->getHae($id);
     
     <div id="modalRetorno"  style="position: fixed; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%; overflow-y: auto; background-color: white; padding: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.1); border-radius: 10px;">
             <form action="../Controller/enviarRetorno.php" method="post">
+                    <span class="fechar" onclick="fecharRetorno()">&times;</span>
                 <div id="camposModalRetorno">
                     <label for="retorno">Retorno</label>
-                    <textarea name="retorno" id="retorno" rows="5"></textarea>
+                    <textarea name="retorno" id="retorno" rows="8"></textarea>
                     <label for="status">status</label>
                     <Select name="status">
                         <option value="0">indeferido</option>
@@ -116,7 +117,13 @@ $haeData = $hae->getHae($id);
                             <button onclick="mostrarHae(<?= $key ?>)">Ver</button>
                     </td>
                     <td>
-                        <button>Enviar</button>
+                        <?php
+                        if($proj["estado"] == 0){
+                            ?>
+                                <button onclick="modalRetorno(<?=$proj['id_projeto']?>)">Enviar</button>
+                            <?php
+                        }
+                        ?>
                     </td>
                 </tr>
                 <?php } ?>
@@ -166,6 +173,15 @@ $haeData = $hae->getHae($id);
         <?php
         }
         ?>
+
+        function modalRetorno(id){
+            document.querySelector("#modalRetorno").style.display = "block";
+            document.querySelector("#id_proj").value = id;
+        }
+        function fecharRetorno(){
+            document.querySelector("#modalRetorno").style.display = "none";
+
+        }
     </script>
 </body>
 

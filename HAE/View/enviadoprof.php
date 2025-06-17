@@ -29,17 +29,16 @@ $haeData = $hae->getHae($id);
 </head>
 
 
-<div id="relatorioModal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close" onclick="closeRelatorioModal()">&times;</span>
-        <h2>Escrever Relatório</h2>
-        <textarea id="relatorioTextarea" rows="8" cols="50" placeholder="Escreva o relatório aqui..."></textarea><br>
-        <button onclick="enviarRelatorio()">Enviar</button>
-    </div>
-</div>
 
 <body>
-
+    <div id="RetornoModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="fecharRetorno()">&times;</span>
+            <h2>Retorno</h2>
+            <textarea id="relatorioTextarea" readonly rows="8" cols="50" placeholder="Escreva o relatório aqui..."></textarea><br>
+        </div>
+    </div>
+    
     <?php
     require "./components/header.php";
     require "./components/vlibras.php";
@@ -90,9 +89,9 @@ $haeData = $hae->getHae($id);
                     <th>Data de Envio</th>
                     <th>Tipo de Atividade</th>
                     <th>Status</th>
-                    <th>Relatório</th> <!-- Nova coluna Relatório -->
+                    <th>Retorno</th> <!-- Nova coluna Relatório -->
                     <th>Edital</th>
-                    <th>Arquivo</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody id="formTableBody">
@@ -107,15 +106,25 @@ $haeData = $hae->getHae($id);
                         <td><?= $proj["tipo_hae"] ?></td>
                         <td><span style="color: green;"><?= $status[$proj["estado"]] ?></span></td>
                         <td>
-                            <label class="upload-btn">
-                                Enviar<input type="file" id="file-upload-1" accept="application/pdf, image/*, .docx, .xlsx" onchange="updateFileName(event, 1)">
-                            </label><span class="file-name" id="file-name-1"></span>
+                            <?php
+                                if($proj['retorno']){
+                                    ?>
+                                        <button onclick="mostrarRetorno(`<?=$proj['retorno']?>`)">Ver</button>
+                                    <?php
+                                }
+                            ?>
                         </td>
                         <td>
                             <button onclick="mostrarHae(<?= $key ?>)">Ver</button>
                         </td>
                         <td>
+                        <?php
+                            if($proj["estado"] == 1){
+                        ?>
                             <button onclick=""><a href="../View/editarHAE.php?idProj=<?= $proj['id_projeto'] ?>">Editar</a></button>
+                            <?php
+                            }
+                            ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -127,7 +136,13 @@ $haeData = $hae->getHae($id);
     </div>
     <script>
         const dadosHae = []
-
+        function mostrarRetorno(texto){
+            document.querySelector('#RetornoModal').style.display = "block"
+            document.querySelector('#relatorioTextarea').innerHTML = texto;
+        }
+        function fecharRetorno(){
+                document.querySelector('#RetornoModal').style.display = "none"
+        }
         <?php
         foreach ($haeData as $key => $proj) {
         ?>

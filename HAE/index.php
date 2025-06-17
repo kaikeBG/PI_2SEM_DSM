@@ -25,7 +25,7 @@ session_unset();
 </head>
 <body>
   <?php
-  require "./HAE/View/components/vlibras.php";
+    require "./View/components/vlibras.php";
   ?>
   <div class="login-container">
     <h2>Login do Edital</h2>

@@ -19,7 +19,8 @@ CREATE TABLE projeto (
     resultado_esperado VARCHAR(255),
     metodologia VARCHAR(255),
     estado INT DEFAULT 0,
-    data_submissao TIMESTAMP NULL
+    data_submissao TIMESTAMP NULL,
+    retorno VARCHAR(255)
 );
  
 -- Tabela Cronograma
@@ -30,11 +31,6 @@ CREATE TABLE cronograma (
     atividade VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE retorno(
-    id_retorno INT PRIMARY KEY AUTO_INCREMENT,
-    fkId_projeto INT NOT NULL,
-    retorno VARCHAR(255) NOT NULL
-);
 
 CREATE TABLE relatorio (
     id_relatorio INT PRIMARY KEY AUTO_INCREMENT,
