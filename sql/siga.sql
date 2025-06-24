@@ -9,7 +9,7 @@ CREATE TABLE fatec (
  
 -- Tabela Professor
 CREATE TABLE professor (
-    id_pro INT PRIMARY KEY AUTO_INCREMENT,
+    id_pro INT PRIMARY KEY,
     nome_pro VARCHAR(100) NOT NULL,
     senha_pro VARCHAR(255) NOT NULL,
     email_pro VARCHAR(100) UNIQUE NOT NULL,
@@ -94,11 +94,15 @@ INSERT INTO fatec (nome_fat) VALUES
 ('FATEC São Paulo'),
 ('FATEC Campinas');
 
-INSERT INTO professor (nome_pro, senha_pro, email_pro, rg_pro, tempoHae) VALUES
-('Carlos Silva', 'senha123', 'csilva@fatec.sp.gov.br', '12.345.678-9', 5),
-('Ana Paula', 'senha456', 'apaula@fatec.sp.gov.br', '98.765.432-1', 8),
-('Roberta Lima', 'senha789', 'rlima@fatec.sp.gov.br', '11.223.344-5', 3),
-('João Mendes',  'senhaabc', 'jmendes@fatec.sp.gov.br', '55.667.889-0', 10);
+INSERT INTO professor (id_pro, nome_pro, senha_pro, email_pro, rg_pro, tempoHae) VALUES
+(123, 'Carlos Silva', 'senha123', 'csilva@fatec.sp.gov.br', '12.345.678-9', 5),
+(999,'Reginaldo', 'senha123', 'reg@fatec.sp.gov.br', '11.223.384-2', 3),
+(321, 'Ana Paula', 'senha123', 'apaula@fatec.sp.gov.br', '98.765.432-1', 8),
+(444, 'Marcela', 'senha123', 'marc@fatec.sp.gov.br', '98.765.432-2', 8),
+(111,'Roberta Lima', 'senha123', 'rlima@fatec.sp.gov.br', '11.223.344-5', 3),
+(555,'Caio', 'senha123', 'caio@fatec.sp.gov.br', '11.223.344-2', 3),
+(222,'João Mendes',  'senha123', 'jmendes@fatec.sp.gov.br', '55.667.889-0', 10),
+(777,'Marlon Mendes',  'senha123', 'marlon@fatec.sp.gov.br', '55.667.889-2', 10);
 
 INSERT INTO materia (nome_mat, desc_mat) VALUES
 ('Banco de Dados', 'Modelagem, criação e administração de bancos de dados.'),
@@ -117,15 +121,21 @@ INSERT INTO materia_curso (idMat_matCur, idCur_matCur, semestre) VALUES
 (4, 2, 2);
 
 INSERT INTO curso_fatec (idFat_curFat, idCur_curFat, idPro_curFat) VALUES
-(1, 1, 1),
-(1, 2, 2),
-(2, 1, 3),
-(2, 2, 4);
+(1, 1, 123),
+(1, 2, 321),
+(2, 1, 111),
+(2, 2, 222);
 
 INSERT INTO materia_curso_fatec (idCurFat_matCurFat, idMatCur_matCurFat, idPro_matCurFat) VALUES
-(1, 1, 1),
-(1, 2, 1),
-(2, 3, 2),
-(2, 4, 2),
-(3, 1, 3),
-(4, 3, 4);
+(1, 1, 123),
+(1, 2, 123),
+(1, 1, 999),
+(1, 2, 999),
+(2, 3, 321),
+(2, 4, 321),
+(2, 3, 444),
+(2, 4, 444),
+(3, 1, 111),
+(3, 1, 555),
+(4, 3, 222),
+(4, 3, 777);

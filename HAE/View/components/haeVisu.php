@@ -14,38 +14,22 @@
     <h1>Visualizar - H.A.E.</h1>
     <div>
         <label for="professor">Professor(a):</label>
-        <input disabled type="text" id="professor" name="professor" value="<?= $formData["nome_pro"] ?>">
+        <input disabled type="text" id="professor" name="professor" value="">
     </div>
     <div>
         <label for="email">E-mail:</label>
-        <input disabled type="email" id="email" name="email" value="<?= $formData["email_pro"] ?>">
+        <input disabled type="email" id="email" name="email" value="">
     </div>
 
 
     <label for="rg">R.G.:</label>
-    <input disabled type="text" id="rg" name="rg" value="<?= $formData["rg_pro"] ?>">
+    <input disabled type="text" id="rg" name="rg" value="">
 
     <label for="matricula">Matrícula:</label>
-    <input disabled type="text" id="matricula" name="matricula" value="<?= $formData["id_pro"] ?>">
+    <input disabled type="text" id="matricula" name="matricula" value="">
 
     <label for="hora-aula">Hora-aula semanal na Fatec:</label>
-    <input disabled type="number" id="hora-aula" name="hora-aula" value="<?= $formData["tempoHae"] ?>">
-
-    <label for="outras-fatecs">Tem aula atribuída em outra(s) Fatec(s)?</label>
-    <select id="outras-fatecs" name="outras-fatecs" disabled>
-        <?php
-        $fats = $prof->getFats($id);
-        if (count($fats) > 1) {
-        ?>
-            <option value="Sim">Sim</option>
-        <?php
-        } else {
-        ?>
-            <option value="Não">Não</option>
-        <?php
-        }
-        ?>
-    </select>
+    <input disabled type="number" id="hora-aula" name="hora-aula" value="">
 
     <label for="tipoHae">Tipo de HAE que está solicitando:</label>
     <input disabled id="tipoHae" name="tipoHae" type="text" required>
@@ -103,43 +87,43 @@
         </thead>
         <tbody>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes1" name="mes1">
+                <td style="width: 20%;">
+                    <label for="">1º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade1" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes2" name="mes2">
+                <td style="width: 20%;">
+                    <label for="">2º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade2" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes3" name="mes3">
+                <td style="width: 20%;">
+                    <label for="">3º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade3" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes4" name="mes4">
+                <td style="width: 20%;">
+                    <label for="">4º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade4" name="atividade-agosto"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes5" name="mes5">
+                <td style="width: 20%;">
+                    <label for="">5º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade5" name="atividade-setembro"
                         placeholder="Descreva a atividade"></td>
             </tr>
             <tr>
-                <td>
-                    <input type="text" disabled id="mes6" name="mes6">
+                <td style="width: 20%;">
+                    <label for="">6º Mês</label>
                 </td>
                 <td><input disabled type="text" id="atividade6" name="atividade-outubro"
                         placeholder="Descreva a atividade"></td>
@@ -150,23 +134,28 @@
 </div>
 
 <script defer>
-        const meses = [
-            "janeiro",
-            "fevereiro",
-            "março",
-            "abril",
-            "maio",
-            "junho",
-            "julho",
-            "agosto",
-            "setembro",
-            "outubro",
-            "novembro",
-            "dezembro"
-        ];
+    const meses = [
+        "janeiro",
+        "fevereiro",
+        "março",
+        "abril",
+        "maio",
+        "junho",
+        "julho",
+        "agosto",
+        "setembro",
+        "outubro",
+        "novembro",
+        "dezembro"
+    ];
 
+    const prof = document.querySelector("#professor");
+    const rg = document.querySelector("#rg");
+    const matri = document.querySelector("#matricula");
+    const horaAula = document.querySelector("#hora-aula");
     const haeVisu = document.querySelector("#haeVisu");
-    
+    const email = document.querySelector("#email");
+
     // Parte 1 - Informações do professor
     const inputProfessor = document.querySelector("#professor");
     const inputEmail = document.querySelector("#email");
@@ -190,22 +179,17 @@
     const textareaResultado = document.querySelector("#resultado");
     const textareaMetodologia = document.querySelector("#metodologia");
 
-    const mes1 = document.querySelector("#mes1");
+
     const atividade1 = document.querySelector("#atividade1");
 
-    const mes2 = document.querySelector("#mes2");
     const atividade2 = document.querySelector("#atividade2");
 
-    const mes3 = document.querySelector("#mes3");
     const atividade3 = document.querySelector("#atividade3");
 
-    const mes4 = document.querySelector("#mes4");
     const atividade4 = document.querySelector("#atividade4");
 
-    const mes5 = document.querySelector("#mes5");
     const atividade5 = document.querySelector("#atividade5");
 
-    const mes6 = document.querySelector("#mes6");
     const atividade6 = document.querySelector("#atividade6");
 
     const fundoHaeVisu = document.getElementById("fundoHaeVisu");
@@ -213,7 +197,13 @@
 
     function mostrarHae(chave) {
         // Parte 2 - Curso e período
+        prof.value = dadosHae[chave]["nome_pro"];
+        rg.value = dadosHae[chave]["rg_pro"];
+        matri.value = dadosHae[chave]["id_pro"];
+        horaAula.value = dadosHae[chave]["tempoHae"];
         selectTipoHae.value = dadosHae[chave]["tipo_hae"];
+        email.value = dadosHae[chave]["email_pro"];
+        tipoHae.value = dadosHae[chave]["tipo_hae"];
 
 
         inputCurso.value = dadosHae[chave]["id_curFat"]
@@ -229,12 +219,6 @@
         textareaResultado.value = dadosHae[chave]["resultado_esperado"]
         textareaMetodologia.value = dadosHae[chave]["metodologia"]
 
-        mes1.value = meses[dadosHae[chave]["mes1"]-1]
-        mes2.value = meses[dadosHae[chave]["mes2"]-1]
-        mes3.value = meses[dadosHae[chave]["mes3"]-1]
-        mes4.value = meses[dadosHae[chave]["mes4"]-1]
-        mes5.value = meses[dadosHae[chave]["mes5"]-1]
-        mes6.value = meses[dadosHae[chave]["mes6"]-1]
 
         atividade1.value = dadosHae[chave]["atv1"]
         atividade2.value = dadosHae[chave]["atv2"]
@@ -247,8 +231,8 @@
         fundoHaeVisu.style.display = "block";
     }
 
-    function closeVisu(){
-    haeVisu.style.display = "none";
-    fundoHaeVisu.style.display = "none";  
+    function closeVisu() {
+        haeVisu.style.display = "none";
+        fundoHaeVisu.style.display = "none";
     }
 </script>

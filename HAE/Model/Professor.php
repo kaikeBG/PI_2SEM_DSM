@@ -60,10 +60,8 @@ class Professor
             JOIN materia_curso mc ON mcf.idMatCur_matCurFat = mc.id_matCur
             JOIN materia m ON mc.idMat_matCur = m.id_mat
             JOIN curso c ON mc.idCur_matCur = c.id_cur
-            WHERE mcf.idPro_matCurFat = :idProf
-            AND mcf.id_matCurFat = :mat ;";
+            WHERE mcf.id_matCurFat = :mat ;";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(":idProf", $id);
         $stmt->bindParam(":mat", $idMat);
 
         $stmt->execute();

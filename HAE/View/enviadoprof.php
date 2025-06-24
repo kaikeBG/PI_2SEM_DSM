@@ -90,7 +90,7 @@ $haeData = $hae->getHae($id);
                     <th>Tipo de Atividade</th>
                     <th>Status</th>
                     <th>Retorno</th> <!-- Nova coluna Relatório -->
-                    <th>Edital</th>
+                    <th>Inscrição</th>
                     <th>Editar</th>
                 </tr>
             </thead>
@@ -149,13 +149,19 @@ $haeData = $hae->getHae($id);
         ?>
             dadosHae.push({
                 <?php
-                foreach ($proj as $key => $value) {
+                $formData = $prof->getFormData($proj["id_professor"]);
+                foreach($formData as $key => $value){
+                    ?>
+                        <?= $key ?>: "<?= $value ?>",
+                    <?php
+                }
+                foreach ($proj as $chave => $value) {
                     $valor = $value;
-                    if ($key == "id_curFat") {
+                    if ($chave == "id_curFat") {
                         $cur = $prof->getUniCurProf($id, $value);
-                        $valor = $cur["nome_mat"] . " - " . $cur["nome_cur"] . " - " . $cur["nome_fat"];
+                        $valor = $cur["nome_mat"] . " - " . $cur["nome_cur"] . " - " . $cur["nome_cur"];
                     }
-                    if($key == "id_projeto"){
+                    if($chave == "id_projeto"){
                         $cronogras = $cron->getCronograma($valor);
                         ?>
                         mes1:<?=$cronogras[0]["mes"]?>,
@@ -175,7 +181,7 @@ $haeData = $hae->getHae($id);
 
 
                     ?>
-                    <?= $key ?>: "<?= $valor ?>",
+                    <?= $chave ?>: "<?= $valor ?>",
                 <?php
                 }
                 ?>

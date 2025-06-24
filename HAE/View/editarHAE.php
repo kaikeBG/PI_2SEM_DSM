@@ -14,10 +14,10 @@ $haeData = $hae->getOneHae($idProj);
 $haeData = $haeData[0];
 $cronograma = $cron->getCronograma($idProj);
 
-if($haeData["tipo_hae"] == "Trabalho de Graduação"){
+if ($haeData["tipo_hae"] == "Trabalho de Graduação") {
     $grad = "selected";
     $esta = "";
-}else{
+} else {
     $esta = "selected";
     $grad = "";
 }
@@ -29,7 +29,7 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edital</title>
+    <title>Inscrição</title>
     <link rel="stylesheet" type="text/css"
         href="https://www.saopaulo.sp.gov.br/barra-govsp/css/rodape-padrao-govsp.min.css">
     <link rel="stylesheet" type="text/css"
@@ -91,7 +91,7 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
         </div>
 
 
-        <form name="haeForm"  method="post" action="../Controller/editarHae.php">
+        <form name="haeForm" method="post" action="../Controller/editarHae.php">
             <!-- Parte 1 -->
             <div class="form-part active" id="part-1">
                 <h1>Editar - H.A.E.</h1>
@@ -128,10 +128,7 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
                 </select>
 
                 <label for="tipo-hae">Tipo de HAE que está solicitando:</label>
-                <select id="tipo-hae" name="tipo-hae" required>
-                    <option <?=$esta?> value="Estágio Supervisionado">Estágio Supervisionado</option>
-                    <option <?=$grad?> value="Trabalho de Graduação">Trabalho de Graduação</option>
-                </select>
+                <input type="text" id="tipo-hae" name="tipoHae" value="<?=$haeData["tipo_hae"]?>" required>
 
                 <button type="button" id="next-1" class="next-btn">Próximo</button>
             </div>
@@ -143,12 +140,11 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
                     <?php
                     foreach ($cur as $key => $curso) {
                         $selectCur = "";
-                        if($curso["id_matCurFat"] == $haeData["id_curFat"]){
-                        $selectCur = "selected";
-
+                        if ($curso["id_matCurFat"] == $haeData["id_curFat"]) {
+                            $selectCur = "selected";
                         }
                     ?>
-                        <option <?=$selectCur?> value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?>  // <?= $curso["nome_fat"]?></option>
+                        <option <?= $selectCur ?> value="<?= $curso["id_matCurFat"] ?>"><?= $curso["nome_mat"] ?> // <?= $curso["nome_cur"] ?> // <?= $curso["nome_fat"] ?></option>
                     <?php
                     }
                     ?>
@@ -156,21 +152,21 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
 
                 <div id="containerNumero" style="margin-top: 10px;">
                     <label for="numero">Qtd. de H.A.E. para Estágio Supervisionado:</label>
-                    <input type="number" id="numeroHAE" value="<?=$haeData["qtd_horas"]?>" name="numeroHAE">
+                    <input type="number" id="numeroHAE" value="<?= $haeData["qtd_horas"] ?>" name="numeroHAE">
                 </div>
 
 
                 <div class="titulo-sessao">Período do Projeto</div>
                 <label for="inicio">Início do Projeto:</label>
-                <input type="date" id="inicio" name="inicio" value="<?=$haeData["data_inicio"]?>" required>
+                <input type="date" id="inicio" name="inicio" value="<?= $haeData["data_inicio"] ?>" required>
 
                 <label for="termino">Término do Projeto:</label>
-                <input type="date" id="termino" name="termino" value="<?=$haeData["data_termino"]?>" required>
+                <input type="date" id="termino" name="termino" value="<?= $haeData["data_termino"] ?>" required>
 
                 <div class="titulo-sessao">Metas Relacionadas ao Projeto</div>
                 <div class="form-group">
                     <label for="metas">Descreva as metas do projeto:</label>
-                    <textarea id="metas" rows="3" name="metas" ><?=$haeData["metas"]?></textarea>
+                    <textarea id="metas" rows="3" name="metas"><?= $haeData["metas"] ?></textarea>
                 </div>
 
                 <button type="button" id="prev-1" class="next-btn">Voltar</button>
@@ -180,19 +176,19 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
             <!-- Parte 3 -->
             <div class="form-part" id="part-3">
                 <div class="titulo-sessao">Objetivos do Projeto</div>
-                <textarea id="objetivos" name="objet"  rows="3"><?=$haeData["objetivos"]?></textarea>
+                <textarea id="objetivos" name="objet" rows="3"><?= $haeData["objetivos"] ?></textarea>
 
                 <div class="titulo-sessao">Justificativas do Projeto</div>
-                <textarea id="justificativas" name="just" rows="3" ><?=$haeData["justificativas"]?></textarea>
+                <textarea id="justificativas" name="just" rows="3"><?= $haeData["justificativas"] ?></textarea>
 
                 <div class="titulo-sessao">Recursos Materiais e Humanos</div>
-                <textarea id="recursos" rows="3" name="recur"><?=$haeData["recursos"]?></textarea>
+                <textarea id="recursos" rows="3" name="recur"><?= $haeData["recursos"] ?></textarea>
 
                 <div class="titulo-sessao">Resultado Esperado</div>
-                <textarea id="resultado" rows="2" name="resul"><?=$haeData["resultado_esperado"]?></textarea>
+                <textarea id="resultado" rows="2" name="resul"><?= $haeData["resultado_esperado"] ?></textarea>
 
                 <div class="titulo-sessao">Metodologia</div>
-                <textarea id="metodologia" rows="2" name="metodo"><?=$haeData["metodologia"]?></textarea>
+                <textarea id="metodologia" rows="2" name="metodo"><?= $haeData["metodologia"] ?></textarea>
 
                 <div class="titulo-sessao">Cronograma de Execução</div>
                 <table>
@@ -204,224 +200,68 @@ if($haeData["tipo_hae"] == "Trabalho de Graduação"){
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[0]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes1">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">1º Mês</label>
+                                <select id="mes" name="mes1" style="display: none;">
+                                    <option value="1" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade1"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[0]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[0]["atividade"] ?>"></td>
                         </tr>
                         <tr>
-                                                        <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[1]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes2">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">2º Mês</label>
+                                <select id="mes" name="mes2" style="display: none;">
+                                    <option value="2" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade2"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[1]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[1]["atividade"] ?>"></td>
                         </tr>
                         <tr>
-                                                        <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[2]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes3">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">3º Mês</label>
+                                <select id="mes" name="mes3" style="display: none;">
+                                    <option value="3" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade3"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[2]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[2]["atividade"] ?>"></td>
                         </tr>
                         <tr>
-                                                        <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[3]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes4">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">4º Mês</label>
+                                <select id="mes" name="mes4" style="display: none;">
+                                    <option value="4" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade4"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[3]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[3]["atividade"] ?>"></td>
                         </tr>
                         <tr>
-                                                        <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[4]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes5">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">5º Mês</label>
+                                <select id="mes" name="mes5" style="display: none;">
+                                    <option value="5" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade5"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[4]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[4]["atividade"] ?>"></td>
                         </tr>
                         <tr>
-                                                        <td>
-                                <?php
-                                $m1 = "";
-                                $m2 = "";
-                                $m3 = "";
-                                $m4 = "";
-                                $m5 = "";
-                                $m6 = "";
-                                $m7 = "";
-                                $m8 = "";
-                                $m9 = "";
-                                $m10 = "";
-                                $m11 = "";
-                                $m12 = "";
-                                $selectMes = "m".$cronograma[5]["mes"];
-                                $$selectMes = "selected";
-                                ?>
-                                <select id="mes" name="mes6">
-                                    <option <?=$m1?> value="1">Janeiro</option>
-                                    <option <?=$m2?> value="2">Fevereiro</option>
-                                    <option <?=$m3?> value="3">Março</option>
-                                    <option <?=$m4?> value="4">Abril</option>
-                                    <option <?=$m5?> value="5">Maio</option>
-                                    <option <?=$m6?> value="6">Junho</option>
-                                    <option <?=$m7?> value="7">Julho</option>
-                                    <option <?=$m8?> value="8">Agosto</option>
-                                    <option <?=$m9?> value="9">Setembro</option>
-                                    <option <?=$m10?> value="10">Outubro</option>
-                                    <option <?=$m11?> value="11">Novembro</option>
-                                    <option <?=$m12?> value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">6º Mês</label>
+                                <select id="mes" name="mes6" style="display: none;">
+                                    <option value="6" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade6"
-                                    placeholder="Descreva a atividade" value="<?=$cronograma[5]["atividade"]?>"></td>
+                                    placeholder="Descreva a atividade" value="<?= $cronograma[5]["atividade"] ?>"></td>
                         </tr>
                     </tbody>
                 </table>
-                    <input type="text" require style="display: none;" name="idProj" value="<?=$haeData["id_projeto"]?>">
+                <input type="text" require style="display: none;" name="idProj" value="<?= $haeData["id_projeto"] ?>">
                 <button type="button" id="prev-2" class="next-btn">Voltar</button>
                 <button type="submit" class="submit-btn">Enviar Formulário</button>
             </div>

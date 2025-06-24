@@ -34,30 +34,13 @@ session_unset();
       <input type="text" name="username" placeholder="Usuário" required>
       <input type="password" name="password" placeholder="Senha" required>
 
-      <div>
-        <input type="radio" name="role" value="coordenador" id="coordenador" required>
-        <label for="coordenador">Coordenador</label>
-
-        <input type="radio" name="role" value="professor" id="professor" required>
-        <label for="professor">Professor</label>
-      </div>
-
       <button type="submit" onclick="handleLogin()">Entrar</button>
     </form>
   </div>
 
   <script>
     function handleLogin() {
-      event.preventDefault(); // Impede o envio imediato do formulário
-
-      const coordenador = document.getElementById("coordenador").checked;
-      const professor = document.getElementById("professor").checked;
-
-      if (coordenador || professor) {
          document.getElementById("loginForm").submit();
-      } else {
-        alert("Selecione uma função para continuar!");
-      }
     }
   </script>
 </body>

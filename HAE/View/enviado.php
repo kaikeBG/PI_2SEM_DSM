@@ -9,7 +9,7 @@ $prof = new Professor();
 $cron = new Cronograma();
 
 $formData = $prof->getFormData($id);
-$haeData = $hae->getHae($id);
+$haeData = $hae->getHaeFat($id);
 
 
 ?>
@@ -103,7 +103,7 @@ $haeData = $hae->getHae($id);
                     <th>Data de Envio</th>
                     <th>Tipo de Atividade</th>
                     <th>Status</th>
-                    <th>Edital</th>
+                    <th>Inscrição</th>
                     <th>Retorno</th>
                 </tr>
 
@@ -112,6 +112,8 @@ $haeData = $hae->getHae($id);
                 <?php
                 $status = ["indeferido", "parcial", "deferido"];
                 foreach ($haeData as $key => $proj) {
+                $formData = $prof->getFormData($proj["id_professor"]);
+                    
                 ?>
                 <tr>
                     <td><?=$proj["id_projeto"]?></td>
@@ -145,6 +147,12 @@ $haeData = $hae->getHae($id);
         ?>
             dadosHae.push({
                 <?php
+                $formData = $prof->getFormData($proj["id_professor"]);
+                foreach($formData as $key => $value){
+                    ?>
+                        <?= $key ?>: "<?= $value ?>",
+                    <?php
+                }
                 foreach ($proj as $key => $value) {
                     $valor = $value;
                     if ($key == "id_curFat") {

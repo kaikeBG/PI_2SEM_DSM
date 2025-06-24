@@ -113,10 +113,7 @@ $formData = $prof->getFormData($id);
                 </select>
 
                 <label for="tipoHae">Tipo de HAE que está solicitando:</label>
-                <select id="tipoHae" name="tipoHae" required>
-                    <option value="Estágio Supervisionado">Estágio Supervisionado</option>
-                    <option value="Trabalho de Graduação">Trabalho de Graduação</option>
-                </select>
+                <input type="text" id="tipo-hae" name="tipoHae" required>
 
                 <button type="button" id="next-1" class="next-btn">Próximo</button>
             </div>
@@ -185,126 +182,65 @@ $formData = $prof->getFormData($id);
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes1">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                            <td style="width: 20%;">
+                                <label for="">1º Mês</label>
+                                <select id="mes" name="mes1" style="display: none;">
+                                    <option value="1" selected></option>
                                 </select>
-                            </td>
+                            </td>   
                             <td><input type="text" id="atividade-agosto" name="atividade1"
                                     placeholder="Descreva a atividade"></td>
                         </tr>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes2">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label for="">2º Mês</label>
+                                <select id="mes" name="mes2" style="display: none;">
+                                    <option value="2" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade2"
                                     placeholder="Descreva a atividade"></td>
                         </tr>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes3">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label for="">3º Mês</label>
+                                <select id="mes" name="mes3" style="display: none;">
+                                    <option value="3" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade3"
                                     placeholder="Descreva a atividade"></td>
                         </tr>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes4">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label for="">4º Mês</label>
+                                <select id="mes" name="mes4" style="display: none;">
+                                    <option value="4" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-agosto" name="atividade4"
                                     placeholder="Descreva a atividade"></td>
                         </tr>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes5">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label for="">5º Mês</label>
+                                <select id="mes" name="mes5" style="display: none;">
+                                    <option value="5" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-setembro" name="atividade5"
                                     placeholder="Descreva a atividade"></td>
                         </tr>
                         <tr>
-                            <td>
-                                <select id="mes" name="mes6">
-                                    <option value="">-- Selecione o mês -- </option>
-                                    <option value="1">Janeiro</option>
-                                    <option value="2">Fevereiro</option>
-                                    <option value="3">Março</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Maio</option>
-                                    <option value="6">Junho</option>
-                                    <option value="7">Julho</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Setembro</option>
-                                    <option value="10">Outubro</option>
-                                    <option value="11">Novembro</option>
-                                    <option value="12">Dezembro</option>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label for="">6º Mês</label>
+                                <select id="mes" name="mes5" style="display: none;">
+                                    <option value="6" selected></option>
                                 </select>
                             </td>
                             <td><input type="text" id="atividade-outubro" name="atividade6"

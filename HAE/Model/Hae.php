@@ -88,6 +88,15 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function getHaeFat($id){
+            $sql = "SELECT * FROM projeto ";
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function getOneHae($id = FALSE){
             $sql = "SELECT * FROM projeto ";
             if($id){
